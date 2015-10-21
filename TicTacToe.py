@@ -66,5 +66,17 @@ def test_update_board(update_board):
     slot = 3
     current_symbol = "x"
     if update_board(test_board, input, current_symbol)!=["x","o","x","x","x","o"," "," "," "]:
-        print("
+        print("")
      
+
+def AI(current_board, AI_symbol, opponent_symbol):
+
+
+def draw_board(current_board):
+
+
+def check_victory(current_board):
+
+
+
+def update_board(current_board, slot, symbol):

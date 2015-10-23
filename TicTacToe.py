@@ -29,21 +29,21 @@ def test_check_victory(check_victory):
 	   print("Nice")
 
 def test_AI():
-    boarda = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
-    boardb =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
-    boardc =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
-    boardd = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
-    boarde = [“x“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
-    if AI(boarda, “x”, ”o”) != 6:
-        print(“Error on board a”)
-    if AI(boardb, “x”, ”o”) != 2:
-        print(“Error on board b”)
-    if AI(boardc, “x”, ”o”) != 6:
-        print(“Error on board c”)
-    if AI(boardd, “x”, ”o”) != 4:
-        print(“Error on board d”)
-    if AI(boarde, “x”, ”o”) != 6:
-        print(“Error on board e”)
+    boarda = [" "," "," "," "," "," "," ","x","x"]
+    boardb =  ["o","o"," "," "," "," "," "," "," "]
+    boardc =  ["o","o"," "," "," "," "," ","x","x"]
+    boardd = [" "," "," "," "," "," "," "," "," "]
+    boarde = ["x","o"," "," "," "," "," "," "," "]
+    if AI(boarda, "x", "o") != 6:
+        print("Error on board a")
+    if AI(boardb, "x", "o") != 2:
+        print("Error on board b")
+    if AI(boardc, "x", "o") != 6:
+        print("Error on board c")
+    if AI(boardd, "x", "o") != 4:
+        print("Error on board d")
+    if AI(boarde, "x", "o") != 6:
+        print("Error on board e")
 
 def test_update_board(update_board):
     oldlista= ["x","x"," "," "," "," "," "," "," "]
@@ -70,36 +70,23 @@ def test_update_board(update_board):
      
 
 def AI(current_board, AI_symbol, opponent_symbol):
-    print 'not implemented'
-
-def draw_example_board:
-    example_board_horiz_1 = "  1  I  2  I  3  "
-    example_board_horiz_2 = "  4  I  5  I  6  "
-    example_board_horiz_3 = "  7  I  8  I  9  "
-    example_board_horiz_4 = "_________________"
+    """Chooses moves for computer based on state of current board"""
+    victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
+    for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+        slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+        check = [] #Creates empty folder called check
+        for i in range(len(slots)): 
+            check.append(current_board[slots[i]])
+        if check.count(AI_symbol)==2 and check.count(" ")==1:
+            return(slots[check.index(" ")])
     
-    print(example_board_horiz_1)
-    print(example_board_vert)
-    print(example_board_horiz_2)
-    print(example_board_vert)
-    print(example_board_horiz_3)
 
-    if turns < 3:
-        draw_example_board
 
 def draw_board(current_board):
-    board_horiz = "  ''  I  ''  I  ''  "
-    board_vert = "____________________"
-    
-print 'hello'+' '+'world'
+
 
 def check_victory(current_board):
-    print 'not working'
+
 
 
 def update_board(current_board, slot, symbol):
-    print 'not working'
-
-# Run my test!
-test_draw_board()
-draw_example_board

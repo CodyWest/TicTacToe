@@ -30,7 +30,7 @@ def test_check_victory(check_victory):
 
 
 def test_AI():
-<<<<<<< Updated upstream
+
     boarda = [" "," "," "," "," "," "," ","x","x"]
     boardb =  ["o","o"," "," "," "," "," "," "," "]
     boardc =  ["o","o"," "," "," "," "," ","x","x"]
@@ -47,7 +47,7 @@ def test_AI():
     if AI(boarde, "x", "o") != 6:
         print("Error on board e")
 
-=======
+
     boarda = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
     boardb =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
     boardc =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,”x”,”x”]

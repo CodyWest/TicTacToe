@@ -28,7 +28,9 @@ def test_check_victory(check_victory):
 	else:
 	   print("Nice")
 
+
 def test_AI():
+<<<<<<< Updated upstream
     boarda = [" "," "," "," "," "," "," ","x","x"]
     boardb =  ["o","o"," "," "," "," "," "," "," "]
     boardc =  ["o","o"," "," "," "," "," ","x","x"]
@@ -45,6 +47,34 @@ def test_AI():
     if AI(boarde, "x", "o") != 6:
         print("Error on board e")
 
+=======
+    boarda = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
+    boardb =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
+    boardc =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
+    boardd = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
+    boarde = [“x“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
+    if AI(boarda, “x”, ”o”) != 6:
+        print(“Error on board a”)
+    if AI(boardb, “x”, ”o”) != 2:
+        print(“Error on board b”)
+    if AI(boardc, “x”, ”o”) != 6:
+        print(“Error on board c”)
+    if AI(boardd, “x”, ”o”) != 4:
+        print(“Error on board d”)
+    if AI(boarde, “x”, ”o”) != 6:
+        print(“Error on board e”)
+def test_get_input(get_input):
+    oldlista= ["x","x"," "," "," "," "," "," "," "]
+    oldlistb= ["x"," "," ","x"," "," "," "," "," "]
+    oldlistc= [" "," ","x"," ","x","o",""," "," "]
+    oldlistd= ["x","o"," ","o"," "," ","x"," ","x"]
+    oldliste= ["x"," ","o","o"," "," "," ","o","x"]
+    oldlistf= [" "," "," "," "," "," "," "," "," "]
+    turn = 0
+    input = 7
+    
+    
+>>>>>>> Stashed changes
 def test_update_board(update_board):
     oldlista= ["x","x"," "," "," "," "," "," "," "]
     oldlistb= ["x"," "," ","x"," "," "," "," "," "]
@@ -62,7 +92,6 @@ def test_update_board(update_board):
     new_board_list= [newlista, newlistb, newlistc, newlistd, newliste, newlistf]
     input_list= ["x", "o", " "]
     slot_list= [1,2,3,4,5,6,7,8,9]
-
     slot = 3
     current_symbol = "x"
     if update_board(test_board, input, current_symbol)!=["x","o","x","x","x","o"," "," "," "]:
@@ -86,6 +115,15 @@ def draw_board(current_board):
 
 def check_victory(current_board):
 
+def get_input(current_board, player_input, turn):
+    turn == 1
+    if turn:
+        x = 1
+    else:
+        o = 0
 
+    player_input=raw_input["Where would you like to put your",turn,"?"]
 
+    
+    turn++
 def update_board(current_board, slot, symbol):

@@ -80,13 +80,31 @@ def AI(current_board, AI_symbol, opponent_symbol):
         if check.count(AI_symbol)==2 and check.count(" ")==1:
             return(slots[check.index(" ")])
     
-
+def draw_example_board():
+    example_board_vert_1 = "  1  I  2  I  3  "
+    example_board_vert_2 = "  4  I  5  I  6  "
+    example_board_vert_3 = "  7  I  8  I  9  "
+    example_board_horiz = "_________________"
+    
+    print(example_board_vert_1)
+    print(example_board_horiz)
+    print(example_board_vert_2)
+    print(example_board_horiz)
+    print(example_board_vert_3)
+    
 
 def draw_board(current_board):
-
+    board_horiz = "  ''  I  ''  I  ''  "
+    board_vert = "____________________"
 
 def check_victory(current_board):
-
+    print("lol")
 
 
 def update_board(current_board, slot, symbol):
+    print("lol")
+
+#test the stuff!
+for x in range (0,3):
+    draw_example_board()
+    print""

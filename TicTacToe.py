@@ -70,13 +70,36 @@ def test_update_board(update_board):
      
 
 def AI(current_board, AI_symbol, opponent_symbol):
+    print 'not implemented'
 
+def draw_example_board:
+    example_board_horiz_1 = "  1  I  2  I  3  "
+    example_board_horiz_2 = "  4  I  5  I  6  "
+    example_board_horiz_3 = "  7  I  8  I  9  "
+    example_board_horiz_4 = "_________________"
+    
+    print(example_board_horiz_1)
+    print(example_board_vert)
+    print(example_board_horiz_2)
+    print(example_board_vert)
+    print(example_board_horiz_3)
+
+    if turns < 3:
+        draw_example_board
 
 def draw_board(current_board):
-
+    board_horiz = "  ''  I  ''  I  ''  "
+    board_vert = "____________________"
+    
+print 'hello'+' '+'world'
 
 def check_victory(current_board):
-
+    print 'not working'
 
 
 def update_board(current_board, slot, symbol):
+    print 'not working'
+
+# Run my test!
+test_draw_board()
+draw_example_board

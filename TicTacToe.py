@@ -101,9 +101,9 @@ def test_update_board(update_board):
      
 
 def AI(current_board, AI_symbol, opponent_symbol, difficulty):
-    """Chooses moves for computer based on state of current board"""
+    """Chooses moves for computer based on state of current board and difficulty of AI"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
-    if difficulty >= 2:
+    if difficulty >= 2: #If difficulty is at least 2
         for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
             check = [] #Creates empty folder called check
@@ -119,26 +119,35 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty):
             if check.count(opponent_symbol)==2 and check.count(" ")==1: #If there are any rows where the opponent has two symbols and there's one empty spot
                 return(slots[check.index(" ")]) #Return the empty spot from that row
         
-    if difficulty >= 3:
+    if difficulty >= 3: #If difficulty is at least 3
         for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
             check = [] #Creates empty folder called check
             for i in range(len(slots)): #For each spot in slots
                 check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
             if check.count(AI_symbol)==1 and check.count(" ")==2: #If there are any rows where the AI has one symbol and there's two empty spots
-                if check[0] == " ":
-                    return(slots[0])
-                else:
-                    return(slots[2])
-    if difficulty == 4:
-        if current_board[4] == " ":
-            return(4)
+                if check[0] == " ": #If the first slot from check is empty
+                    return(slots[0]) #Return the first slot
+                else: 
+                    return(slots[2]) #Return the third slot
+    if difficulty == 4: #If difficulty is 4
+        if current_board[4] == " ": #If the center is empty
+            return(4) #Take the center
+        elif current_board[0] or current_board[2] or current_board[6] or current_board[8] == " ": #Else, if a corner is open
+            corners = 2*random.randint(0,4) #Selects a random corner (or center, which will reject)
+            while current_board(corners) != " ": #Until the corner selected is empty
+                corners = 2*random.randint(0,4) #Select a new corner or center
+            return(corners) #Return empty corner
         else:
-            return(0)
-    if difficulty < 4:
-        ran = random.randint(0,8)
-        while current_board[ran] != " ":
-            ran = random.randint(0,8)
+            sides = 2*random.randint(0,3)+1 #Selects a side
+            while current_board(sides) != " ": #Until the side is empty
+                sides = 2*random.randint(0,3)+1 #Selects a new side
+            return(sides) #Returns empty side
+    if difficulty < 4: #If difficulty is less than 4
+        ran = random.randint(0,8) #Picks random spot on board
+        while current_board[ran] != " ": #Until the spot is empty
+            ran = random.randint(0,8) #Picks a new spot
+        return(ran) #Returns empty spot
 
                         
     

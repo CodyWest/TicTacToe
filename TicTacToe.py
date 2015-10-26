@@ -1,3 +1,5 @@
+import random
+
 def test_draw_board(draw_board):
 #" " is a blank space
     lista= ["x","x"," "," "," "," "," "," "," "]
@@ -98,39 +100,47 @@ def test_update_board(update_board):
         print("")
      
 
-def AI(current_board, AI_symbol, opponent_symbol):
+def AI(current_board, AI_symbol, opponent_symbol, difficulty):
     """Chooses moves for computer based on state of current board"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
-    for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
-        slots = victory_conditions[n] #Take the victory conditions and put them in a new list
-        check = [] #Creates empty folder called check
-        for i in range(len(slots)): #For each spot in slots
-            check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
-        if check.count(AI_symbol)==2 and check.count(" ")==1: #If there are any rows where the AI has two symbols and there's one empty spot
-            return(slots[check.index(" ")]) #Return the empty spot from that row
-    for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
-        slots = victory_conditions[n] #Take the victory conditions and put them in a new list
-        check = [] #Creates empty folder called check
-        for i in range(len(slots)): #For each spot in slots
-            check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
-        if check.count(opponent_symbol)==2 and check.count(" ")==1: #If there are any rows where the opponent has two symbols and there's one empty spot
-            return(slots[check.index(" ")]) #Return the empty spot from that row
-    for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
-        slots = victory_conditions[n] #Take the victory conditions and put them in a new list
-        check = [] #Creates empty folder called check
-        for i in range(len(slots)): #For each spot in slots
-            check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
-        if check.count(AI_symbol)==1 and check.count(" ")==2: #If there are any rows where the AI has one symbol and there's two empty spots
-            if check[0] == " ":
-                return(slots[0])
-            else:
-                return(slots[2])
-    if current_board[4] == " ":
-        return(4)
-    else:
-        return(0)
-                    
-    
+    if difficulty >= 2:
+        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+            slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+            check = [] #Creates empty folder called check
+            for i in range(len(slots)): #For each spot in slots
+                check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
+            if check.count(AI_symbol)==2 and check.count(" ")==1: #If there are any rows where the AI has two symbols and there's one empty spot
+                return(slots[check.index(" ")]) #Return the empty spot from that row
+        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+            slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+            check = [] #Creates empty folder called check
+            for i in range(len(slots)): #For each spot in slots
+                check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
+            if check.count(opponent_symbol)==2 and check.count(" ")==1: #If there are any rows where the opponent has two symbols and there's one empty spot
+                return(slots[check.index(" ")]) #Return the empty spot from that row
+        
+    if difficulty >= 3:
+        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+            slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+            check = [] #Creates empty folder called check
+            for i in range(len(slots)): #For each spot in slots
+                check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
+            if check.count(AI_symbol)==1 and check.count(" ")==2: #If there are any rows where the AI has one symbol and there's two empty spots
+                if check[0] == " ":
+                    return(slots[0])
+                else:
+                    return(slots[2])
+    if difficulty == 4:
+        if current_board[4] == " ":
+            return(4)
+        else:
+            return(0)
+    if difficulty < 4:
+        ran = random.randint(0,8)
+        while current_board[ran] != " ":
+            ran = random.randint(0,8)
+
+                        
     
 def draw_example_board():
     example_board_vert_1 = "  1  I  2  I  3  "

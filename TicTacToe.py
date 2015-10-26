@@ -161,7 +161,11 @@ def get_input(current_board, player_input, turn,):
 		else:
 			turn = 'O'
 
-    
+    for i in options(0,1,2,3,4,5,6,7,8):
+        if player_input != options:
+            println(player_input,"Is not a valid move buddy. Try again-->")
+        else:
+            
     turn++
 def update_board(current_board, slot, symbol):
     print("lol")

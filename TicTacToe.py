@@ -152,17 +152,14 @@ def draw_board(current_board):
 def check_victory(current_board):
 #<<<<<<< HEAD
 
-def get_input(current_board, player_input, turn):
-    turn == 1
-    if turn:
-        x = 1
-    else:
-        o = 0
-#=======
-    print("lol")
-    #>>>>>>> origin/master
+def get_input(current_board, player_input, turn,):
 
     player_input=raw_input["Where would you like to put your",turn,"?"]
+    print "Turn number " + str(turn+1)
+		if turn % 2 == 0:
+			turn = 'X'
+		else:
+			turn = 'O'
 
     
     turn++

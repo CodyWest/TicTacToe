@@ -74,7 +74,7 @@ def test_get_input(get_input):
     input = 7
     
     
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
 def test_update_board(update_board):
     oldlista= ["x","x"," "," "," "," "," "," "," "]
     oldlistb= ["x"," "," ","x"," "," "," "," "," "]
@@ -99,21 +99,35 @@ def test_update_board(update_board):
      
 
 def AI(current_board, AI_symbol, opponent_symbol):
-    victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]]
-    for n in range(len(victory_conditions)):
-        slots = victory_conditions[n]
-        check = []
-        for i in range(len(slots)):
+    """Chooses moves for computer based on state of current board"""
+    victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
+    for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+        slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+        check = [] #Creates empty folder called check
+        for i in range(len(slots)): 
             check.append(current_board[slots[i]])
-            if check.count(AI_symbol)==2 and check.count(" ")==1:
-                return(slots[check.index(" ")])
+        if check.count(AI_symbol)==2 and check.count(" ")==1:
+            return(slots[check.index(" ")])
+    
+def draw_example_board():
+    example_board_vert_1 = "  1  I  2  I  3  "
+    example_board_vert_2 = "  4  I  5  I  6  "
+    example_board_vert_3 = "  7  I  8  I  9  "
+    example_board_horiz = "_________________"
+    
+    print(example_board_vert_1)
+    print(example_board_horiz)
+    print(example_board_vert_2)
+    print(example_board_horiz)
+    print(example_board_vert_3)
     
 
-
 def draw_board(current_board):
-
+    board_horiz = "  ''  I  ''  I  ''  "
+    board_vert = "____________________"
 
 def check_victory(current_board):
+#<<<<<<< HEAD
 
 def get_input(current_board, player_input, turn):
     turn == 1
@@ -121,9 +135,18 @@ def get_input(current_board, player_input, turn):
         x = 1
     else:
         o = 0
+#=======
+    print("lol")
+    #>>>>>>> origin/master
 
     player_input=raw_input["Where would you like to put your",turn,"?"]
 
     
     turn++
 def update_board(current_board, slot, symbol):
+    print("lol")
+
+#test the stuff!
+for x in range (0,3):
+    draw_example_board()
+    print""

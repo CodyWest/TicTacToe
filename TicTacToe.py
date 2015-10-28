@@ -50,21 +50,6 @@ def test_AI():
         print("Error on board e")
 
 
-    boarda = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
-    boardb =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
-    boardc =  [“o“,“o“,“ “,“ “,“ “,“ “,“ “,”x”,”x”]
-    boardd = [“ “,“ “,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
-    boarde = [“x“,“o“,“ “,“ “,“ “,“ “,“ “,” ”,” ”]
-    if AI(boarda, “x”, ”o”) != 6:
-        print(“Error on board a”)
-    if AI(boardb, “x”, ”o”) != 2:
-        print(“Error on board b”)
-    if AI(boardc, “x”, ”o”) != 6:
-        print(“Error on board c”)
-    if AI(boardd, “x”, ”o”) != 4:
-        print(“Error on board d”)
-    if AI(boarde, “x”, ”o”) != 6:
-        print(“Error on board e”)
 def test_get_input(get_input):
     oldlista= ["x","x"," "," "," "," "," "," "," "]
     oldlistb= ["x"," "," ","x"," "," "," "," "," "]

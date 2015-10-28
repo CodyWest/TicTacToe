@@ -174,8 +174,9 @@ def get_input(current_board, player_input, turn,):
 def update_board(current_board, slot, symbol):
     print("lol")
 
-#test the stuff!
-for x in range (0,3):
-    draw_example_board()
-    print""
 
+
+
+=======
+    print""
+>>>>>>> origin/master

@@ -157,9 +157,9 @@ def check_victory(current_board):
 #<<<<<<< HEAD
 
 def get_input(current_board, player_input, turn,):
-
+    
     player_input=raw_input["Where would you like to put your",turn,"?"]
-    print "Turn number " + str(turn+1)
+    print("Turn number " + str(turn+1))
 		if turn % 2 == 0:
 			turn = 'X'
 		else:
@@ -178,3 +178,45 @@ def update_board(current_board, slot, symbol):
 for x in range (0,3):
     draw_example_board()
     print""
+
+
+def TicTacToe():
+    current_board = [" "," "," "," "," "," "," "," "," "]
+    players = 0
+    human = 0
+    turn = 1
+    while players != 1 and players != 2:
+        players = int(raw_input("How many players are there?"))
+        if players < 1 or players > 2:
+            print("Please pick 1 or 2 players")
+    if players == 1:
+        difficulty = 0
+        while difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4:
+            difficulty = int(raw_input("Pick a difficulty.  1 is easiest, 4 is hardest"))
+            if difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4:
+                print("Please pick a difficulty between 1 and 4")
+        while human != 1 and human != 2:
+            human = int(raw_input("Would you like to go first (1) or second (2)?"))
+            if human != 1 and human != 2:
+                print("Please pick turn 1 or 2")
+    if human == 1:
+        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn)
+        player2 = AI(current_board)
+    elif human == 2:
+        player1 = AI(current_board)
+        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn)
+    else:
+        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn)
+        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn)
+    while turn < 10:
+        if turn < 3:
+            draw_example_board()
+        draw_board(current_board)
+        if turn%2 == 1:
+            update_board(current_board, player1, "X")
+        else:
+            update_board(current_board, player2, "O")
+        check_victory(current_board)
+        turn = turn + 1
+
+

@@ -103,7 +103,7 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty):
                 check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
             if check.count(opponent_symbol)==2 and check.count(" ")==1: #If there are any rows where the opponent has two symbols and there's one empty spot
                 return(slots[check.index(" ")]) #Return the empty spot from that row
-        
+       
     if difficulty >= 3: #If difficulty is at least 3
         for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
@@ -151,7 +151,7 @@ def draw_example_board():
 
 def draw_board(current_board):
     board_horiz = "  ''  I  ''  I  ''  "
-    board_vert = "____________________"
+    board_vert = "_____________________"
 
 def check_victory(current_board):
 #<<<<<<< HEAD
@@ -159,18 +159,18 @@ def check_victory(current_board):
 def get_input(current_board, player_input, turn,):
 
     player_input=raw_input["Where would you like to put your",turn,"?"]
-    print "Turn number " + str(turn+1)
-		if turn % 2 == 0:
+    print ("Turn number ",turn+1)
+		if int turn % 2 == 0:
 			turn = 'X'
 		else:
 			turn = 'O'
 
-    for i in (1,9):
+    for i in (0,8):
         if player_input != options:
             println(i,"Is not a valid move buddy. Try again-->")
         else:
             print("Nice")
-    turn++
+
 def update_board(current_board, slot, symbol):
     print("lol")
 
@@ -178,3 +178,4 @@ def update_board(current_board, slot, symbol):
 for x in range (0,3):
     draw_example_board()
     print""
+

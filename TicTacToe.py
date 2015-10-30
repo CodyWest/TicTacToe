@@ -170,24 +170,39 @@ def get_input(current_board, player_input, turn,):
 
     print("Turn number " + str(turn+1))
 		if turn % 2 == 0:
->>>>>>> origin/master
+
 			turn = 'X'
 		else:
 			turn = 'O'
 
-    for i in (0,8):
+    for player_input in options(1,9):
+        
         if player_input != options:
-            println(i,"Is not a valid move buddy. Try again-->")
+            
+            println(player_input,"Is not a valid move buddy. Try again-->")
+            
         else:
+            
             print("Nice")
+            
+            player_input=player_input-1
+            
+            
+            if current_board[player_input]= empty:
+
+                print(player_input, "Is a valid move")
+
+            else:
+
+                print(player_input, " has already been taken. Please select another slot."
+        
 
 def update_board(current_board, slot, symbol):
     print("lol")
 
 
 
-<<<<<<< HEAD
-=======
+
 def TicTacToe():
     current_board = [" "," "," "," "," "," "," "," "," "]
     players = 0
@@ -227,8 +242,8 @@ def TicTacToe():
         check_victory(current_board)
         turn = turn + 1
 
->>>>>>> origin/master
 
-=======
+
+
     print""
->>>>>>> origin/master
+

@@ -216,9 +216,9 @@ def check_victory(current_board):
 
      victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] 
     
-        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
-            slots = victory_conditions[n] #Take the victory conditions and put them in a new list
-            check = []print
+     for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+         slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+         check = []print
 #<<<<<<< HEAD
 =======
     pass #<<<<<<< HEAD
@@ -327,12 +327,4 @@ def TicTacToe():
 
 
 
-    print""
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-=======
 test_draw_board()
->>>>>>> Stashed changes
->>>>>>> origin/master

@@ -1,6 +1,6 @@
 import random
 
-def test_draw_board(draw_board):
+def test_draw_board():
 #" " is a blank space
     lista= ["x","x"," "," "," "," "," "," "," "]
     listb= ["x"," "," ","x"," "," "," "," "," "]
@@ -8,7 +8,6 @@ def test_draw_board(draw_board):
     listd= ["x","o","x","o","x","o","x","o","x"]
     liste= ["x"," ","o","o"," ","x","","o","x"]
     listf= [" "," "," "," "," "," "," "," "," "]
-
     draw_board(lista)
     draw_board(listb)
     draw_board(listc)
@@ -38,16 +37,62 @@ def test_AI():
     boardc =  ["o","o"," "," "," "," "," ","x","x"]
     boardd = [" "," "," "," "," "," "," "," "," "]
     boarde = ["x","o"," "," "," "," "," "," "," "]
-    if AI(boarda, "x", "o") != 6:
-        print("Error on board a")
-    if AI(boardb, "x", "o") != 2:
-        print("Error on board b")
-    if AI(boardc, "x", "o") != 6:
-        print("Error on board c")
-    if AI(boardd, "x", "o") != 4:
-        print("Error on board d")
-    if AI(boarde, "x", "o") != 8:
-        print("Error on board e")
+    if AI(boarda, "x", "o", 4) != 6:
+        print("Mistake on board a, diff 4")
+    if AI(boardb, "x", "o", 4) != 2:
+        print("Mistake on board b, diff 4")
+    if AI(boardc, "x", "o", 4) != 6:
+        print("Mistake on board c, diff 4")
+    if AI(boardd, "x", "o", 4) != 4:
+        print("Mistake on board d, diff 4")
+    if AI(boarde, "x", "o", 4) != 8:
+        print("Mistake on board e, diff 4")
+    if AI(boarda, "x", "o", 3) != 6:
+        print("Mistake on board a, diff 3")
+    if AI(boardb, "x", "o", 3) != 2:
+        print("Mistake on board b, diff 3")
+    if AI(boardc, "x", "o", 3) != 6:
+        print("Mistake on board c, diff 3")
+    if AI(boardd, "x", "o", 3) == 4:
+        print("Correct on board d, diff 3")
+    if AI(boarde, "x", "o", 3) != 8:
+        print("Mistake on board e, diff 3")
+    if AI(boardd, "x", "o", 3) == 4: #Runs board d a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
+        print("Correct on board d, diff 3")
+    if AI(boarda, "x", "o", 2) != 6:
+        print("Mistake on board a, diff 2")
+    if AI(boardb, "x", "o", 2) != 2:
+        print("Mistake on board b, diff 2")
+    if AI(boardc, "x", "o", 2) != 6:
+        print("Mistake on board c, diff 2")
+    if AI(boardd, "x", "o", 2) == 4:
+        print("Correct on board d, diff 2")
+    if AI(boarde, "x", "o", 2) == 8:
+        print("Correct on board e, diff 2")
+    if AI(boardd, "x", "o", 2) == 4:#Runs board d a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
+        print("Correct on board d, diff 2")
+    if AI(boarde, "x", "o", 2) == 8: #Runs board e a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
+        print("Correct on board e, diff 2")
+    if AI(boarda, "x", "o", 1) == 6: 
+        print("Correct on board a, diff 1")
+    if AI(boardb, "x", "o", 1) == 2:
+        print("Correct on board a, diff 1")
+    if AI(boardc, "x", "o", 1) == 6:
+        print("Correct on board a, diff 1")
+    if AI(boardd, "x", "o", 1) == 4:
+        print("Correct on board a, diff 1")
+    if AI(boarde, "x", "o", 1) == 8:
+        print("Correct on board a, diff 1")
+    if AI(boarda, "x", "o", 1) == 6: #Runs boards a through e a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
+        print("Correct on board a, diff 1")
+    if AI(boardb, "x", "o", 1) == 2:
+        print("Correct on board a, diff 1")
+    if AI(boardc, "x", "o", 1) == 6:
+        print("Correct on board a, diff 1")
+    if AI(boardd, "x", "o", 1) == 4:
+        print("Correct on board a, diff 1")
+    if AI(boarde, "x", "o", 1) == 8:
+        print("Correct on board a, diff 1")
 
 
 def test_get_input(get_input):
@@ -150,18 +195,37 @@ def draw_example_board():
     
 
 def draw_board(current_board):
+
     board_horiz = "  ''  I  ''  I  ''  "
     board_vert = "_____________________"
 
+    board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
+    board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
+    board_vert_3 = "  "+current_board[6]+"  "+"I"+"  "+current_board[7]+"  "+"I"+"  "+current_board[8]+"  " #draws third row of slots and verticalspacers
+    board_horiz_1 = "_"*len(board_vert_1) #draws first horizontal spacer
+    board_horiz_2 = "_"*len(board_vert_2) #draws second horizontal spacer
+
+
+    print(board_vert_1)
+    print(board_horiz_1)
+    print(board_vert_2)
+    print(board_horiz_2)
+    print(board_vert_3)
+#print the board
 def check_victory(current_board):
+
      victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] 
     
         for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
             check = []print
 #<<<<<<< HEAD
+=======
+    pass #<<<<<<< HEAD
+>>>>>>> origin/master
 
 def get_input(current_board, player_input, turn,):
+
     
     player_input=raw_input["Where would you like to go?"]
 
@@ -177,6 +241,16 @@ def get_input(current_board, player_input, turn,):
 
     for player_input in options(1,9):
         
+
+    player_input=raw_input["Where would you like to put your",turn,"?"]
+    print "Turn number " + str(turn+1)
+    if turn % 2 == 0:
+        turn = 'X'
+    else:
+        turn = 'O'
+>>>>>>> Stashed changes
+    for i in (1,9):
+>>>>>>> origin/master
         if player_input != options:
             
             println(player_input,"Is not a valid move buddy. Try again-->")
@@ -184,6 +258,7 @@ def get_input(current_board, player_input, turn,):
         else:
             
             print("Nice")
+<<<<<<< HEAD
             
             player_input=player_input-1
             
@@ -197,53 +272,66 @@ def get_input(current_board, player_input, turn,):
                 print(player_input, " has already been taken. Please select another slot."
         
 
+=======
+    #turn++
+    
+>>>>>>> origin/master
 def update_board(current_board, slot, symbol):
-    print("lol")
+    current_board
 
+<<<<<<< Updated upstream
 
 
 
 def TicTacToe():
-    current_board = [" "," "," "," "," "," "," "," "," "]
-    players = 0
-    human = 0
-    turn = 1
-    while players != 1 and players != 2:
-        players = int(raw_input("How many players are there?"))
-        if players < 1 or players > 2:
-            print("Please pick 1 or 2 players")
-    if players == 1:
-        difficulty = 0
-        while difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4:
-            difficulty = int(raw_input("Pick a difficulty.  1 is easiest, 4 is hardest"))
-            if difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4:
-                print("Please pick a difficulty between 1 and 4")
-        while human != 1 and human != 2:
-            human = int(raw_input("Would you like to go first (1) or second (2)?"))
-            if human != 1 and human != 2:
-                print("Please pick turn 1 or 2")
-    if human == 1:
-        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn)
-        player2 = AI(current_board)
-    elif human == 2:
-        player1 = AI(current_board)
-        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn)
-    else:
-        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn)
-        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn)
-    while turn < 10:
-        if turn < 3:
-            draw_example_board()
-        draw_board(current_board)
-        if turn%2 == 1:
-            update_board(current_board, player1, "X")
-        else:
-            update_board(current_board, player2, "O")
-        check_victory(current_board)
-        turn = turn + 1
+    """Plays Tic Tac Toe"""
+    current_board = [" "," "," "," "," "," "," "," "," "] #Empty board
+    players = 0 #Number of players
+    human = 0 #Indicates whether the human goes first or second (is 0 for two player games)
+    turn = 1 #Turn number
+    while players != 1 and players != 2: #While a valid number of players has not been chosen
+        players = int(raw_input("How many players are there?")) #Asks how many players there are
+        if players < 1 or players > 2: #If the choice is not valid
+            print("Please pick 1 or 2 players") #Prints error message
+    if players == 1: #If 1 player
+        difficulty = 0 #Difficulty variable
+        while difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4: #While a valid difficulty has not been chose
+            difficulty = int(raw_input("Pick a difficulty.  1 is easiest, 4 is hardest")) #Ask for a difficulty
+            if difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4: #If difficulty choice is not valid
+                print("Please pick a difficulty between 1 and 4") #Prints error message
+        while human != 1 and human != 2: #While a human turn has not been chosen
+            human = int(raw_input("Would you like to go first (1) or second (2)?")) #Ask for human turn
+            if human != 1 and human != 2: #If a valid turn is not chosen
+                print("Please pick turn 1 or 2") #Print error message
+    if human == 1: #If human goes first
+        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        player2 = AI(current_board) #Player 2 is AI
+    elif human == 2: #If human goes second
+        player1 = AI(current_board) #Player 1 is AI
+        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn) #Player 2 is human
+    else: #If neither
+        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn) #Player 2 is human
+    while turn < 10: #While the number of turns in Tic Tac Toe has not been exceeded
+        if turn < 3: #For the first three turns
+            draw_example_board() #Draw a board showing the slot numbers
+        draw_board(current_board) #Draw current board
+        if turn%2 == 1: #If it's an odd numbered turn
+            update_board(current_board, player1, "X") #Update board with player 1's selection and X
+        else: 
+            update_board(current_board, player2, "O") #Update board with player 2's selection and O
+        check_victory(current_board) #Check victory
+        turn = turn + 1 #Increase turn number
 
 
 
 
     print""
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
+=======
+test_draw_board()
+>>>>>>> Stashed changes
+>>>>>>> origin/master

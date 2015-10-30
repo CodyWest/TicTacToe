@@ -1,6 +1,6 @@
 import random
 
-def test_draw_board(draw_board):
+def test_draw_board():
 #" " is a blank space
     lista= ["x","x"," "," "," "," "," "," "," "]
     listb= ["x"," "," ","x"," "," "," "," "," "]
@@ -8,7 +8,6 @@ def test_draw_board(draw_board):
     listd= ["x","o","x","o","x","o","x","o","x"]
     liste= ["x"," ","o","o"," ","x","","o","x"]
     listf= [" "," "," "," "," "," "," "," "," "]
-
     draw_board(lista)
     draw_board(listb)
     draw_board(listc)
@@ -196,13 +195,23 @@ def draw_example_board():
     
 
 def draw_board(current_board):
-    board_horiz = "  ''  I  ''  I  ''  "
-    board_vert = "____________________"
+    board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
+    board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
+    board_vert_3 = "  "+current_board[6]+"  "+"I"+"  "+current_board[7]+"  "+"I"+"  "+current_board[8]+"  " #draws third row of slots and verticalspacers
+    board_horiz_1 = "_"*len(board_vert_1) #draws first horizontal spacer
+    board_horiz_2 = "_"*len(board_vert_2) #draws second horizontal spacer
 
+    print(board_vert_1)
+    print(board_horiz_1)
+    print(board_vert_2)
+    print(board_horiz_2)
+    print(board_vert_3)
+#print the board
 def check_victory(current_board):
-#<<<<<<< HEAD
+    pass #<<<<<<< HEAD
 
 def get_input(current_board, player_input, turn,):
+<<<<<<< Updated upstream
     
     player_input=raw_input["Where would you like to put your",turn,"?"]
     print("Turn number " + str(turn+1))
@@ -211,15 +220,25 @@ def get_input(current_board, player_input, turn,):
 		else:
 			turn = 'O'
 
+=======
+    player_input=raw_input["Where would you like to put your",turn,"?"]
+    print "Turn number " + str(turn+1)
+    if turn % 2 == 0:
+        turn = 'X'
+    else:
+        turn = 'O'
+>>>>>>> Stashed changes
     for i in (1,9):
         if player_input != options:
             println(i,"Is not a valid move buddy. Try again-->")
         else:
             print("Nice")
-    turn++
+    #turn++
+    
 def update_board(current_board, slot, symbol):
-    print("lol")
+    current_board
 
+<<<<<<< Updated upstream
 
 
 def TicTacToe():
@@ -265,3 +284,6 @@ def TicTacToe():
 =======
     print""
 >>>>>>> origin/master
+=======
+test_draw_board()
+>>>>>>> Stashed changes

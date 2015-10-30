@@ -196,7 +196,10 @@ def get_input(current_board, player_input, turn,):
         
 
 def update_board(current_board, slot, symbol):
-    print("lol")
+<<<<<<< HEAD
+    current_board[slot] = symbol
+    return current_board
+>>>>>>> origin/master
 
 
 

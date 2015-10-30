@@ -38,16 +38,62 @@ def test_AI():
     boardc =  ["o","o"," "," "," "," "," ","x","x"]
     boardd = [" "," "," "," "," "," "," "," "," "]
     boarde = ["x","o"," "," "," "," "," "," "," "]
-    if AI(boarda, "x", "o") != 6:
-        print("Error on board a")
-    if AI(boardb, "x", "o") != 2:
-        print("Error on board b")
-    if AI(boardc, "x", "o") != 6:
-        print("Error on board c")
-    if AI(boardd, "x", "o") != 4:
-        print("Error on board d")
-    if AI(boarde, "x", "o") != 8:
-        print("Error on board e")
+    if AI(boarda, "x", "o", 4) != 6:
+        print("Mistake on board a, diff 4")
+    if AI(boardb, "x", "o", 4) != 2:
+        print("Mistake on board b, diff 4")
+    if AI(boardc, "x", "o", 4) != 6:
+        print("Mistake on board c, diff 4")
+    if AI(boardd, "x", "o", 4) != 4:
+        print("Mistake on board d, diff 4")
+    if AI(boarde, "x", "o", 4) != 8:
+        print("Mistake on board e, diff 4")
+    if AI(boarda, "x", "o", 3) != 6:
+        print("Mistake on board a, diff 3")
+    if AI(boardb, "x", "o", 3) != 2:
+        print("Mistake on board b, diff 3")
+    if AI(boardc, "x", "o", 3) != 6:
+        print("Mistake on board c, diff 3")
+    if AI(boardd, "x", "o", 3) == 4:
+        print("Correct on board d, diff 3")
+    if AI(boarde, "x", "o", 3) != 8:
+        print("Mistake on board e, diff 3")
+    if AI(boardd, "x", "o", 3) == 4:
+        print("Correct on board d, diff 3")
+    if AI(boarda, "x", "o", 2) != 6:
+        print("Mistake on board a, diff 2")
+    if AI(boardb, "x", "o", 2) != 2:
+        print("Mistake on board b, diff 2")
+    if AI(boardc, "x", "o", 2) != 6:
+        print("Mistake on board c, diff 2")
+    if AI(boardd, "x", "o", 2) == 4:
+        print("Correct on board d, diff 2")
+    if AI(boarde, "x", "o", 2) == 8:
+        print("Correct on board e, diff 2")
+    if AI(boardd, "x", "o", 2) == 4:
+        print("Correct on board d, diff 2")
+    if AI(boarde, "x", "o", 2) == 8:
+        print("Correct on board e, diff 2")
+    if AI(boarda, "x", "o", 1) == 6:
+        print("Correct on board a, diff 1")
+    if AI(boardb, "x", "o", 1) == 2:
+        print("Correct on board a, diff 1")
+    if AI(boardc, "x", "o", 1) == 6:
+        print("Correct on board a, diff 1")
+    if AI(boardd, "x", "o", 1) == 4:
+        print("Correct on board a, diff 1")
+    if AI(boarde, "x", "o", 1) == 8:
+        print("Correct on board a, diff 1")
+    if AI(boarda, "x", "o", 1) == 6:
+        print("Correct on board a, diff 1")
+    if AI(boardb, "x", "o", 1) == 2:
+        print("Correct on board a, diff 1")
+    if AI(boardc, "x", "o", 1) == 6:
+        print("Correct on board a, diff 1")
+    if AI(boardd, "x", "o", 1) == 4:
+        print("Correct on board a, diff 1")
+    if AI(boarde, "x", "o", 1) == 8:
+        print("Correct on board a, diff 1")
 
 
 def test_get_input(get_input):

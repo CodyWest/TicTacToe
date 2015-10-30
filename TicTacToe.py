@@ -328,11 +328,6 @@ def TicTacToe():
 
 
     print""
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
-=======
 test_draw_board()
->>>>>>> Stashed changes
->>>>>>> origin/master
+

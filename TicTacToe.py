@@ -85,28 +85,31 @@ def test_get_input(get_input):#By Josh
     turnVal = 6
     player_input = 7
     
-def test_update_board(update_board):
+def test_update_board(update_board): #By Grant
     oldlista= ["x","x"," "," "," "," "," "," "," "]
     oldlistb= ["x"," "," ","x"," "," "," "," "," "]
     oldlistc= [" "," ","x"," ","x"," ","x"," "," "]
     oldlistd= ["x","o","x","o","x"," ","x","o","x"]
     oldliste= ["x"," ","o","o"," "," ","","o","x"]
     oldlistf= [" "," "," "," "," "," "," "," "," "]
-    old_board_list= [oldlista, oldlistb, oldlistc, oldlistd, oldliste, oldlistf]
     newlista= ["x","x"," "," "," ","x"," "," "," "]
     newlistb= ["x"," "," ","x"," ","x"," "," "," "]
     newlistc= [" "," ","x"," ","x","x","x"," "," "]
     newlistd= ["x","o","x","o","x","x","x","o","x"]
     newliste= ["x"," ","o","o"," ","x","","o","x"]
     newlistf= [" "," "," "," "," ","x"," "," "," "]
-    new_board_list= [newlista, newlistb, newlistc, newlistd, newliste, newlistf]
-    input_list= ["x", "o", " "]
-    slot_list= [1,2,3,4,5,6,7,8,9]
-    slot = 3
-    current_symbol = "x"
-    if update_board(test_board, input, current_symbol)!=["x","o","x","x","x","o"," "," "," "]:
-        print("")
-     
+    if update_board(oldlista, 6, "X") == newlista:
+        print "ye"
+    if update_board(oldlistb, 6, "X") == newlistb:
+        print "ye"
+    if update_board(oldlistc, 6, "X") == newlistc:
+        print "ye"
+    if update_board(oldlistd, 6, "X") == newlistd:
+        print "ye"
+    if update_board(oldliste, 6, "X") == newliste:
+        print "ye"
+    if update_board(oldlistf, 6, "X") == newlistf:
+        print "ye"
 
 def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
     """Chooses moves for computer based on state of current board and difficulty of AI"""
@@ -159,7 +162,7 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
 
                         
     
-def draw_example_board():
+def draw_example_board(): #By Grant
     example_board_vert_1 = "  1  I  2  I  3  "
     example_board_vert_2 = "  4  I  5  I  6  "
     example_board_vert_3 = "  7  I  8  I  9  "
@@ -172,7 +175,7 @@ def draw_example_board():
     print(example_board_vert_3)
     
 
-def draw_board(current_board):
+def draw_board(current_board): #By Grant
 
     board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
     board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
@@ -231,7 +234,7 @@ def get_input(current_board, player_input, turn,):
     #turn++
     
 
-def update_board(current_board, slot, symbol):
+def update_board(current_board, slot, symbol): #By Grant
     current_board[slot] = symbol
     return current_board
 

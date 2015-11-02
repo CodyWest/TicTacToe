@@ -30,8 +30,8 @@ def test_check_victory(check_victory):
 	   print("Nice")
 
 
-def test_AI():
-
+def test_AI(): #Written by Cody West
+    """Tests AI function""" 
     boarda = [" "," "," "," "," "," "," ","x","x"]
     boardb =  ["o","o"," "," "," "," "," "," "," "]
     boardc =  ["o","o"," "," "," "," "," ","x","x"]
@@ -53,46 +53,30 @@ def test_AI():
         print("Mistake on board b, diff 3")
     if AI(boardc, "x", "o", 3) != 6:
         print("Mistake on board c, diff 3")
-    if AI(boardd, "x", "o", 3) == 4:
+    if AI(boardd, "x", "o", 3) == 4 and AI(boardd, "x", "o", 3) == 4: #Lines like this are meant to check if these functions are getting the right answer consistently, since there's a chance they'll pick the optimal spot randomly
         print("Correct on board d, diff 3")
     if AI(boarde, "x", "o", 3) != 8:
         print("Mistake on board e, diff 3")
-    if AI(boardd, "x", "o", 3) == 4: #Runs board d a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
-        print("Correct on board d, diff 3")
     if AI(boarda, "x", "o", 2) != 6:
         print("Mistake on board a, diff 2")
     if AI(boardb, "x", "o", 2) != 2:
         print("Mistake on board b, diff 2")
     if AI(boardc, "x", "o", 2) != 6:
         print("Mistake on board c, diff 2")
-    if AI(boardd, "x", "o", 2) == 4:
+    if AI(boardd, "x", "o", 2) == 4 and AI(boardd, "x", "o", 2) == 4:
         print("Correct on board d, diff 2")
-    if AI(boarde, "x", "o", 2) == 8:
+    if AI(boarde, "x", "o", 2) == 8 and AI(boarde, "x", "o", 2) == 8:
         print("Correct on board e, diff 2")
-    if AI(boardd, "x", "o", 2) == 4:#Runs board d a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
-        print("Correct on board d, diff 2")
-    if AI(boarde, "x", "o", 2) == 8: #Runs board e a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
-        print("Correct on board e, diff 2")
-    if AI(boarda, "x", "o", 1) == 6: 
+    if AI(boarda, "x", "o", 1) == 6 and AI(boarda, "x", "o", 1) == 6: 
         print("Correct on board a, diff 1")
-    if AI(boardb, "x", "o", 1) == 2:
-        print("Correct on board a, diff 1")
-    if AI(boardc, "x", "o", 1) == 6:
-        print("Correct on board a, diff 1")
-    if AI(boardd, "x", "o", 1) == 4:
-        print("Correct on board a, diff 1")
-    if AI(boarde, "x", "o", 1) == 8:
-        print("Correct on board a, diff 1")
-    if AI(boarda, "x", "o", 1) == 6: #Runs boards a through e a second time, since there's a chance it could come up as correct the first time randomly, so this checks to see if it's a coding error
-        print("Correct on board a, diff 1")
-    if AI(boardb, "x", "o", 1) == 2:
-        print("Correct on board a, diff 1")
-    if AI(boardc, "x", "o", 1) == 6:
-        print("Correct on board a, diff 1")
-    if AI(boardd, "x", "o", 1) == 4:
-        print("Correct on board a, diff 1")
-    if AI(boarde, "x", "o", 1) == 8:
-        print("Correct on board a, diff 1")
+    if AI(boardb, "x", "o", 1) == 2 and AI(boardb, "x", "o", 1) == 2:
+        print("Correct on board b, diff 1")
+    if AI(boardc, "x", "o", 1) == 6 and AI(boardc, "x", "o", 1) == 6:
+        print("Correct on board c, diff 1")
+    if AI(boardd, "x", "o", 1) == 4 and AI(boardd, "x", "o", 1) == 4:
+        print("Correct on board d, diff 1")
+    if AI(boarde, "x", "o", 1) == 8 and AI(boarde, "x", "o", 1) == 8:
+        print("Correct on board e, diff 1")
 
 
 def test_get_input(get_input):
@@ -128,7 +112,7 @@ def test_update_board(update_board):
         print("")
      
 
-def AI(current_board, AI_symbol, opponent_symbol, difficulty):
+def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
     """Chooses moves for computer based on state of current board and difficulty of AI"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
     if difficulty >= 2: #If difficulty is at least 2
@@ -249,7 +233,7 @@ def update_board(current_board, slot, symbol):
     return current_board
 
 
-def TicTacToe():
+def TicTacToe(): #Written by Cody West
     """Plays Tic Tac Toe"""
     current_board = [" "," "," "," "," "," "," "," "," "] #Empty board
     players = 0 #Number of players

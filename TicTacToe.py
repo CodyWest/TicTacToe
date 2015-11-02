@@ -2,11 +2,11 @@ import random
 
 def test_draw_board():
 #" " is a blank space
-    lista= ["x","x"," "," "," "," "," "," "," "]
-    listb= ["x"," "," ","x"," "," "," "," "," "]
-    listc= [" "," ","x"," ","x"," ","x"," "," "]
-    listd= ["x","o","x","o","x","o","x","o","x"]
-    liste= ["x"," ","o","o"," ","x","","o","x"]
+    lista= ["X","X"," "," "," "," "," "," "," "]
+    listb= ["X"," "," ","X"," "," "," "," "," "]
+    listc= [" "," ","X"," ","X"," ","X"," "," "]
+    listd= ["X","O","X","O","X","O","X","O","X"]
+    liste= ["X"," ","O","O"," ","X","","O","X"]
     listf= [" "," "," "," "," "," "," "," "," "]
     draw_board(lista)
     draw_board(listb)
@@ -16,11 +16,11 @@ def test_draw_board():
     draw_board(listf)
 
 def test_check_victory(check_victory):
-    vic1 = ["x","o","x","o","o","x","x","o"," "]
-    vic2 = ["x","x","x","o","x","o","x","o","x"]
+    vic1 = ["X","O","X","O","O","X","X","O"," "]
+    vic2 = ["X","X","X","O","X","O","X","O","X"]
     vic3 = [" "," "," "," "," "," "," "," "," "]
-    vic4 = ["x"," "," ","x"," "," ","x"," "," "]
-    vic5 = [" "," "," "," "," "," ","o","o","o"]
+    vic4 = ["X"," "," ","X"," "," ","X"," "," "]
+    vic5 = [" "," "," "," "," "," ","O","O","O"]
     viclist = [vic1, vic2, vic3, vic4, vic5]
     vicanswers = [True, True, False, True, True]
     for n in (0,5):
@@ -32,83 +32,86 @@ def test_check_victory(check_victory):
 
 def test_AI(): #Written by Cody West
     """Tests AI function""" 
-    boarda = [" "," "," "," "," "," "," ","x","x"]
-    boardb =  ["o","o"," "," "," "," "," "," "," "]
-    boardc =  ["o","o"," "," "," "," "," ","x","x"]
+    boarda = [" "," "," "," "," "," "," ","X","X"]
+    boardb =  ["O","O"," "," "," "," "," "," "," "]
+    boardc =  ["O","O"," "," "," "," "," ","X","X"]
     boardd = [" "," "," "," "," "," "," "," "," "]
-    boarde = ["x","o"," "," "," "," "," "," "," "]
-    if AI(boarda, "x", "o", 4) != 6:
+    boarde = ["X","O"," "," "," "," "," "," "," "]
+    if AI(boarda, "X", "O", 4) != 6:
         print("Mistake on board a, diff 4")
-    if AI(boardb, "x", "o", 4) != 2:
+    if AI(boardb, "X", "O", 4) != 2:
         print("Mistake on board b, diff 4")
-    if AI(boardc, "x", "o", 4) != 6:
+    if AI(boardc, "X", "O", 4) != 6:
         print("Mistake on board c, diff 4")
-    if AI(boardd, "x", "o", 4) != 4:
+    if AI(boardd, "X", "O", 4) != 4:
         print("Mistake on board d, diff 4")
-    if AI(boarde, "x", "o", 4) != 8:
+    if AI(boarde, "X", "O", 4) != 8:
         print("Mistake on board e, diff 4")
-    if AI(boarda, "x", "o", 3) != 6:
+    if AI(boarda, "X", "O", 3) != 6:
         print("Mistake on board a, diff 3")
-    if AI(boardb, "x", "o", 3) != 2:
+    if AI(boardb, "X", "O", 3) != 2:
         print("Mistake on board b, diff 3")
-    if AI(boardc, "x", "o", 3) != 6:
+    if AI(boardc, "X", "O", 3) != 6:
         print("Mistake on board c, diff 3")
-    if AI(boardd, "x", "o", 3) == 4 and AI(boardd, "x", "o", 3) == 4: #Lines like this are meant to check if these functions are getting the right answer consistently, since there's a chance they'll pick the optimal spot randomly
+    if AI(boardd, "X", "O", 3) == 4 and AI(boardd, "X", "O", 3) == 4: #Lines like this are meant to check if these functions are getting the right answer consistently, since there's a chance they'll pick the optimal spot randomly
         print("Correct on board d, diff 3")
-    if AI(boarde, "x", "o", 3) != 8:
+    if AI(boarde, "X", "O", 3) != 8:
         print("Mistake on board e, diff 3")
-    if AI(boarda, "x", "o", 2) != 6:
+    if AI(boarda, "X", "O", 2) != 6:
         print("Mistake on board a, diff 2")
-    if AI(boardb, "x", "o", 2) != 2:
+    if AI(boardb, "X", "O", 2) != 2:
         print("Mistake on board b, diff 2")
-    if AI(boardc, "x", "o", 2) != 6:
+    if AI(boardc, "X", "O", 2) != 6:
         print("Mistake on board c, diff 2")
-    if AI(boardd, "x", "o", 2) == 4 and AI(boardd, "x", "o", 2) == 4:
+    if AI(boardd, "X", "O", 2) == 4 and AI(boardd, "X", "O", 2) == 4:
         print("Correct on board d, diff 2")
-    if AI(boarde, "x", "o", 2) == 8 and AI(boarde, "x", "o", 2) == 8:
+    if AI(boarde, "X", "O", 2) == 8 and AI(boarde, "X", "O", 2) == 8:
         print("Correct on board e, diff 2")
-    if AI(boarda, "x", "o", 1) == 6 and AI(boarda, "x", "o", 1) == 6: 
+    if AI(boarda, "X", "O", 1) == 6 and AI(boarda, "X", "O", 1) == 6: 
         print("Correct on board a, diff 1")
-    if AI(boardb, "x", "o", 1) == 2 and AI(boardb, "x", "o", 1) == 2:
+    if AI(boardb, "X", "O", 1) == 2 and AI(boardb, "X", "O", 1) == 2:
         print("Correct on board b, diff 1")
-    if AI(boardc, "x", "o", 1) == 6 and AI(boardc, "x", "o", 1) == 6:
+    if AI(boardc, "X", "O", 1) == 6 and AI(boardc, "X", "O", 1) == 6:
         print("Correct on board c, diff 1")
-    if AI(boardd, "x", "o", 1) == 4 and AI(boardd, "x", "o", 1) == 4:
+    if AI(boardd, "X", "O", 1) == 4 and AI(boardd, "X", "O", 1) == 4:
         print("Correct on board d, diff 1")
-    if AI(boarde, "x", "o", 1) == 8 and AI(boarde, "x", "o", 1) == 8:
+    if AI(boarde, "X", "O", 1) == 8 and AI(boarde, "X", "O", 1) == 8:
         print("Correct on board e, diff 1")
 
 
 def test_get_input(get_input):#By Josh
     
-    current_board= ["x"," ","o","o"," "," "," ","o","x"]
+    current_board= ["X"," ","O","O"," "," "," ","O","X"]
     turnVal = 6
     player_input = 7
     
-def test_update_board(update_board): #By Grant
-    oldlista= ["x","x"," "," "," "," "," "," "," "]
-    oldlistb= ["x"," "," ","x"," "," "," "," "," "]
-    oldlistc= [" "," ","x"," ","x"," ","x"," "," "]
-    oldlistd= ["x","o","x","o","x"," ","x","o","x"]
-    oldliste= ["x"," ","o","o"," "," ","","o","x"]
+def test_update_board(): #By Grant
+    oldlista= ["X","X"," "," "," "," "," "," "," "]
+    oldlistb= ["X"," "," ","X"," "," "," "," "," "]
+    oldlistc= [" "," ","X"," ","X"," ","X"," "," "]
+    oldlistd= ["X","O","X","O","X"," ","X","O","X"]
+    oldliste= ["X"," ","O","O"," "," ","","O","X"]
     oldlistf= [" "," "," "," "," "," "," "," "," "]
-    newlista= ["x","x"," "," "," ","x"," "," "," "]
-    newlistb= ["x"," "," ","x"," ","x"," "," "," "]
-    newlistc= [" "," ","x"," ","x","x","x"," "," "]
-    newlistd= ["x","o","x","o","x","x","x","o","x"]
-    newliste= ["x"," ","o","o"," ","x","","o","x"]
-    newlistf= [" "," "," "," "," ","x"," "," "," "]
-    if update_board(oldlista, 6, "X") == newlista:
+    newlista= ["X","X"," "," "," ","X"," "," "," "]
+    newlistb= ["X"," "," ","X"," ","X"," "," "," "]
+    newlistc= [" "," ","X"," ","X","X","X"," "," "]
+    newlistd= ["X","O","X","O","X","X","X","O","X"]
+    newliste= ["X"," ","O","O"," ","X","","O","X"]
+    newlistf= [" "," "," "," "," ","X"," "," "," "]
+    print update_board(oldlistb, 5, "X")
+    if update_board(oldlistb, 5, "X") != newlistb:
         print "ye"
-    if update_board(oldlistb, 6, "X") == newlistb:
+    print update_board(oldlistc, 5, "X")
+    if update_board(oldlistc, 5, "X") != newlistc:
         print "ye"
-    if update_board(oldlistc, 6, "X") == newlistc:
+    print update_board(oldlistd, 5, "X")
+    if update_board(oldlistd, 5, "X") != newlistd:
         print "ye"
-    if update_board(oldlistd, 6, "X") == newlistd:
+    print update_board(oldliste, 5, "X")
+    if update_board(oldliste, 5, "X") != newliste:
         print "ye"
-    if update_board(oldliste, 6, "X") == newliste:
-        print "ye"
-    if update_board(oldlistf, 6, "X") == newlistf:
+    print update_board(oldlistf, 5, "X")
+    if update_board(oldlistf, 5, "X") != newlistf:
         print "ye"
 
 def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
@@ -301,3 +304,9 @@ def TicTacToe(): #Written by Cody West
             update_board(current_board, player2, "O") #Update board with player 2's selection and O
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
+
+
+test_draw_board()
+
+
+test_update_board()

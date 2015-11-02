@@ -160,6 +160,29 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
             ran = random.randint(0,8) #Picks a new spot
         return(ran) #Returns empty spot
 
+def create_victory_conditions(size): #Written by Cody West
+    """Creates a list of victory conditions based on the size of the board"""
+    victory_conditions = []
+    for i in range(size):
+        horizontal_victory = []
+        for n in range(size):
+            horizontal_victory.append(size*i+n)
+        victory_conditions.append(horizontal_victory)
+    for i in range(size):
+        vertical_victory = []
+        for n in range(size):
+            vertical_victory.append(size*n+i)
+        victory_conditions.append(vertical_victory)
+    diagonal_victory_1 = []
+    for i in range(size):
+        diagonal_victory_1.append(size*i+i)
+    victory_conditions.append(diagonal_victory_1)
+    diagonal_victory_2 = []
+    for i in range(size):
+        diagonal_victory_2.append((i+1)*size-(i+1))
+    victory_conditions.append(diagonal_victory_2)
+    return(victory_conditions)
+        
                         
     
 def draw_example_board(): #By Grant

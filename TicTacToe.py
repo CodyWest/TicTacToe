@@ -79,15 +79,11 @@ def test_AI(): #Written by Cody West
         print("Correct on board e, diff 1")
 
 
-def test_get_input(get_input):
-    oldlista= ["x","x"," "," "," "," "," "," "," "]
-    oldlistb= ["x"," "," ","x"," "," "," "," "," "]
-    oldlistc= [" "," ","x"," ","x","o",""," "," "]
-    oldlistd= ["x","o"," ","o"," "," ","x"," ","x"]
-    oldliste= ["x"," ","o","o"," "," "," ","o","x"]
-    oldlistf= [" "," "," "," "," "," "," "," "," "]
-    turn = 0
-    input = 7
+def test_get_input(get_input):#By Josh
+    
+    current_board= ["x"," ","o","o"," "," "," ","o","x"]
+    turnVal = 6
+    player_input = 7
     
 def test_update_board(update_board):
     oldlista= ["x","x"," "," "," "," "," "," "," "]
@@ -195,36 +191,43 @@ def check_victory(current_board):
 
      victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] 
     
-        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
+     for n in range(victory_conditions): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
-            check = []print
+            
 
 def get_input(current_board, player_input, turn,):
                       
     for player_input in options(1,9):
 
-    player_input=raw_input["Where would you like to put your",turn,"?"]
-    print "Turn number " + str(turn+1)
-    if turn % 2 == 0:
-        turn = 'X'
-    else:
-        turn = 'O'
+        player_input=raw_input["Where would you like to put your",turn,"?"]
+        print ("Turn number ",turn+1)
+
+        if turnVal % 2 == 0:
+
+            turn = 'X'
+
+        else:
+
+            turn = 'O'
+        
     for i in (1,9):
+        
         if player_input != options:
             println(player_input,"Is not a valid move buddy. Try again-->")
+            
         else:
+            
             print("Nice")
             
             player_input=player_input-1
             
-            
-            if current_board[player_input]= empty:
+            if ((current_board[player_input]+) = " "):
 
                 print(player_input, "Is a valid move")
 
             else:
 
-                print(player_input, " has already been taken. Please select another slot."
+                print(player_input, " has already been taken. Please select another slot.")
     #turn++
     
 
@@ -272,3 +275,4 @@ def TicTacToe(): #Written by Cody West
             update_board(current_board, player2, "O") #Update board with player 2's selection and O
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
+test_get_input()

@@ -83,16 +83,16 @@ def test_get_input():#By Josh
     
     current_board= ["X"," ","O","O"," "," "," ","X","X"]
 
-    print get_input(current_board, 6,7)
-    print get_input(current_board, "utjdf", 7)
-    print get_input(current_board, 2, 7)
-   # new_current_board= ["X"," ","O","O"," "," ","O","X","X"]
+    get_input(current_board, 6,7)
+    get_input(current_board, "utjdf", 7)
+    get_input(current_board, 2, 7)
+    new_current_board= ["X"," ","O","O"," "," ","O","X","X"]
     
 
-    #if current_board == new_current_board:
-        #print "Success!"
-    #else:
-        #print "Error"
+    if current_board == new_current_board:
+        print "Success!"
+    else:
+        print "Error"
     
 def test_update_board(): #By Grant
     oldlista= ["X","X"," "," "," "," "," "," "," "]
@@ -314,12 +314,16 @@ def TicTacToe(): #Written by Cody West
         if turn < 3: #For the first three turns
             draw_example_board() #Draw a board showing the slot numbers
         draw_board(current_board) #Draw current board
+        #### FIXME - write some code to get the next turn... -- this should ask the right player or the AI for a turn
+        slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        ### End FIXME
         if turn%2 == 1: #If it's an odd numbered turn
-            update_board(current_board, player1, "X") #Update board with player 1's selection and X
+            #update_board(current_board, player1, "X") #Update board with player 1's selection and X
+            update_board(current_board, slot, "X") #Update board with player 1's selection and X
         else: 
-            update_board(current_board, player2, "O") #Update board with player 2's selection and O
+            #update_board(current_board, player2, "O") #Update board with player 2's selection and O
+            update_board(current_board, slot, "O") #Update board with player 2's selection and O
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
 
 
-test_get_input()

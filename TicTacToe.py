@@ -233,7 +233,10 @@ def check_victory(current_board):
     pass
             
 
-def get_input(current_board, player_input, turn):
+def get_input (current_board, player_input, turn):
+    '''get_input checks that player_input is valid and returns the slot
+    the player is moving in.
+    '''
                       
     for player_input in (1,9):
 

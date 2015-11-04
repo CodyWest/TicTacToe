@@ -1,6 +1,6 @@
 import random
 
-def test_draw_board():
+def test_draw_board(): #By Grant
 #" " is a blank space
     lista= ["X","X"," "," "," "," "," "," "," "]
     listb= ["X"," "," ","X"," "," "," "," "," "]
@@ -106,19 +106,19 @@ def test_update_board(): #By Grant
     newliste= ["X"," ","O","O"," ","X","","O","X"]
     newlistf= [" "," "," "," "," ","X"," "," "," "]
     print update_board(oldlistb, 5, "X")
-    if update_board(oldlistb, 5, "X") != newlistb:
+    if update_board(oldlistb, 5, "X") == newlistb:
         print "ye"
     print update_board(oldlistc, 5, "X")
-    if update_board(oldlistc, 5, "X") != newlistc:
+    if update_board(oldlistc, 5, "X") == newlistc:
         print "ye"
     print update_board(oldlistd, 5, "X")
-    if update_board(oldlistd, 5, "X") != newlistd:
+    if update_board(oldlistd, 5, "X") == newlistd:
         print "ye"
     print update_board(oldliste, 5, "X")
-    if update_board(oldliste, 5, "X") != newliste:
+    if update_board(oldliste, 5, "X") == newliste:
         print "ye"
     print update_board(oldlistf, 5, "X")
-    if update_board(oldlistf, 5, "X") != newlistf:
+    if update_board(oldlistf, 5, "X") == newlistf:
         print "ye"
 
 def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
@@ -316,7 +316,3 @@ def TicTacToe(): #Written by Cody West
         turn = turn + 1 #Increase turn number
 
 
-test_draw_board()
-
-
-test_update_board()

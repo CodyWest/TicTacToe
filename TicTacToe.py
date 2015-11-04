@@ -79,14 +79,16 @@ def test_AI(): #Written by Cody West
         print("Correct on board e, diff 1")
 
 
-def test_get_input(get_input):#By Josh
+def test_get_input():#By Josh
     
     current_board= ["X"," ","O","O"," "," "," ","X","X"]
 
-    current_board= ["X"," ","O","O"," "," "," ","O","X"]
-    turnVal = 6
-    player_input = 7
+    get_input(current_board, 6,7)
+    get_input(current_board, "utjdf", 7)
+    get_input(current_board, 2, 7)
     new_current_board= ["X"," ","O","O"," "," ","O","X","X"]
+    
+
     if current_board == new_current_board:
         print "Success!"
     else:
@@ -227,16 +229,13 @@ def check_victory(current_board):
 
 
 
-    victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]]
-
-    for n in range(victory_conditions): #For each victory condition in victory_conditions
-        slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+  #  victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]]
+    pass
             
->>>>>>> origin/master
 
-def get_input(current_board, player_input, turn,):
+def get_input(current_board, player_input, turn):
                       
-    for player_input in options(1,9):
+    for player_input in (1,9):
 
         player_input=raw_input["Where would you like to put your",turn,"?"]
         print ("Turn number ",turn+1)
@@ -252,7 +251,7 @@ def get_input(current_board, player_input, turn,):
     for i in (1,9):
         
         while player_input != options:
-            println(player_input,"Is not a valid move buddy. Try again-->")
+            print(player_input,"Is not a valid move buddy. Try again-->")
             
         else:
             
@@ -263,10 +262,14 @@ def get_input(current_board, player_input, turn,):
             while ((current_board[player_input]) == " "):
 
                 print(player_input, "Is a valid move")
+                
+                slot = player_input
 
             else:
 
                 print(player_input, " has already been taken. Please select another slot.")
+                
+        
     #turn++
     
 

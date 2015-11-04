@@ -85,7 +85,7 @@ def test_get_input():#By Josh
 
     get_input(current_board, 6,7)
     get_input(current_board, "utjdf", 7)
-    get_input(current_board, 2, 7)
+    get_input(current_board, 1, 7)
     new_current_board= ["X"," ","O","O"," "," ","O","X","X"]
     
 
@@ -240,7 +240,7 @@ def get_input (current_board, player_input, turn):
                       
     for player_input in (1,9):
 
-        player_input=raw_input["Where would you like to put your",turn,"?"]
+        player_input=raw_input("Where would you like to put your",turn,"?")
         print ("Turn number ",turn+1)
 
         if turnVal % 2 == 0:
@@ -327,3 +327,4 @@ def TicTacToe(): #Written by Cody West
         turn = turn + 1 #Increase turn number
 
 
+test_get_input()

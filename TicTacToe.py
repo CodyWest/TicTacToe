@@ -323,8 +323,8 @@ def TicTacToe(): #Written by Cody West
         player1 = "human" #Player 1 is human
         player2 = "AI" #Player 2 is AI
     elif human_turn == 2: #If human goes second
-        player1 = "AI"
-        player2 = "human"
+        player1 = "AI" #Player 1 is AI
+        player2 = "human" #Player 2 is human
     else: #If neither
         player1 = "human" #Player 1 is human
         player2 = "human" #Player 2 is human
@@ -335,14 +335,14 @@ def TicTacToe(): #Written by Cody West
         #slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
         if turn%2 == 1: #If it's an odd numbered turn
             if player1 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn), "X") #Update board with player 1's selection and X
+                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")), turn), "X") #Update board with player 1's selection and X
             else:
-                update_board(current_board, AI(current_board), "X")
+                update_board(current_board, AI(current_board, "X", "O", difficulty), "X") #Update board with AI selection
         else:
             if player2 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn), "O") #Update board with player 1's selection and X
+                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")), turn), "O") #Update board with player 2's selection and X
             else:
-                update_board(current_board, AI(current_board), "O")
+                update_board(current_board, AI(current_board, "O", "X", difficulty), "O") #Update board with AI selection
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
 

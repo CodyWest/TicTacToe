@@ -122,7 +122,7 @@ def test_update_board(): #By Grant
     print update_board(oldlistf, 5, "X")
     if update_board(oldlistf, 5, "X") == newlistf:
         print "ye"
-
+ 
 def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
     """Chooses moves for computer based on state of current board and difficulty of AI"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
@@ -333,7 +333,7 @@ def TicTacToe(): #Written by Cody West
             draw_example_board() #Draw a board showing the slot numbers
         draw_board(current_board) #Draw current board
         #### FIXME - write some code to get the next turn... -- this should ask the right player or the AI for a turn
-        slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn)
         ### End FIXME
         if turn%2 == 1: #If it's an odd numbered turn
             #update_board(current_board, player1, "X") #Update board with player 1's selection and X

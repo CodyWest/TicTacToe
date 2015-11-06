@@ -225,55 +225,73 @@ def draw_board(current_board): #By Grant
     print(board_horiz_2)
     print(board_vert_3)
 #print the board
-def check_victory(current_board):
+def check_victory(current_board)#By Joshua Landis
 
+'''this function is going to try to find a victory and then return a win or a tie'''
 
+    WAYS_TO_WIN = ((0, 1, 2),#here we have all of the possible wins that the player can make
+                   (3, 4, 5),
+                   (6, 7, 8),
+                   (0, 3, 6),
+                   (1, 4, 7),
+                   (2, 5, 8),
+                   (0, 4, 8),
+                   (2, 4, 6))
+    #just looks neater and more intuitive :-)
 
-  #  victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]]
-    pass
+    for current_board in WAYS_TO_WIN:
+
+        if current_board[0] == current_board[1] == current_board[2] != (" "):#if all of the slots have the same symbol
+
+            winner = current_board[0]#declare the symbol of the first value in the winning row
+            return winner
+            
+        if (" ") not in current_board:#if all of the spaces are filled and none have this blank value
+
+            return TIE          #tells the function to stop when there are no blank spaces and no wins
+  
+        return None
             
 
 def get_input (current_board, player_input, turn):
     '''get_input checks that player_input is valid and returns the slot
     the player is moving in.
     '''
-                      
-    for player_input in (1,9):
 
-        player_input=raw_input("Where would you like to put your",turn,"?")
-        print ("Turn number ",turn+1)
+        player_input=raw_input("Where would you like to put your spot?")
 
-        if turnVal % 2 == 0:
+        if turn % 2 == 0:#depending on who has gone already, decide if it is X or O turn
 
-            turn = 'X'
+            symbol = 'X'
 
         else:
 
-            turn = 'O'
+            symbol = 'O'
         
-    for i in (1,9):
+    for player_input in (1,9):#for all of these possible inputs
         
-        while player_input != options:
-            print(player_input,"Is not a valid move buddy. Try again-->")
-            
-        else:
-            
-            print("Nice")
-            
-            player_input=player_input-1
-            
-            while ((current_board[player_input]) == " "):
+        while player_input != options:#if someone says something that isn't 1-9 
 
-                print(player_input, "Is a valid move")
+            print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again
+            
+        else:#if it's ok
+            
+            player_input=player_input-1#bring it down one for the update board function
+            
+            while ((current_board[player_input]) == " "):#while the space the chose is empty
+
+                print(player_input, "Is a valid move")#tell them its a valid move
                 
-                slot = player_input
+                slot = player_input#convert the player_input into slot(the variable that the rest of the function uses
 
-            else:
+                return slot#return slot back to the rest of the function
 
-                print(player_input, " has already been taken. Please select another slot.")
+            else:#if that spot has already been taken
+
+                print(player_input, " has already been taken. Please select another slot.")#tell them they need to pick again and the loop starts over
                 
         
-    #turn++
+    
     
 
 def update_board(current_board, slot, symbol): #By Grant

@@ -157,12 +157,12 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
             return(4) #Take the center
         elif current_board[0] or current_board[2] or current_board[6] or current_board[8] == " ": #Else, if a corner is open
             corners = 2*random.randint(0,4) #Selects a random corner (or center, which will reject)
-            while current_board(corners) != " ": #Until the corner selected is empty
+            while current_board[corners] != " ": #Until the corner selected is empty
                 corners = 2*random.randint(0,4) #Select a new corner or center
             return(corners) #Return empty corner
         else:
             sides = 2*random.randint(0,3)+1 #Selects a side
-            while current_board(sides) != " ": #Until the side is empty
+            while current_board[sides] != " ": #Until the side is empty
                 sides = 2*random.randint(0,3)+1 #Selects a new side
             return(sides) #Returns empty side
     if difficulty < 4: #If difficulty is less than 4
@@ -171,7 +171,7 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
             ran = random.randint(0,8) #Picks a new spot
         return(ran) #Returns empty spot
 
-def create_victory_conditions(size): #Written by Cody West
+def create_victory_conditions(size): #Written by Cody West.  Not used in current program, could be used to make boards of different sizes
     """Creates a list of victory conditions based on the size of the board"""
     victory_conditions = []
     for i in range(size):
@@ -235,28 +235,22 @@ def check_victory(current_board):#By Joshua Landis
 
 #this function is going to try to find a victory and then return a win or a tie
 
-    WAYS_TO_WIN = [[0, 1, 2],#here we have all of the possible wins that the player can make
-                   [3, 4, 5],
-                   [6, 7, 8],
-                   [0, 3, 6],
-                   [1, 4, 7],
-                   [2, 5, 8],
-                   [0, 4, 8],
-                   [2, 4, 6]]
+    WAYS_TO_WIN = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
     #just looks neater and more intuitive :-)
 
     for board in WAYS_TO_WIN:
-
-        if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] != (" "):#if all of the slots have the same symbol
-
-            winner = current_board[board[0]]#declare the symbol of the first value in the winning row
-            return winner
+        if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] and current_board[board[0]]!= (" "):#if all of the slots have the same symbol
+            draw_board(current_board)
+            print("IT'S OVER!")
+            print(current_board[board[0]], "WINS")
+            return "done"
             
-        if (" ") not in current_board:#if all of the spaces are filled and none have this blank value
+        if current_board.count(" ") == 0:#if all of the spaces are filled and none have this blank value
+            draw_board(current_board)
+            print("IT'S OVER!")
+            print("YOU'RE ALL LOSERS!")
 
-            return "TIE"          #tells the function to stop when there are no blank spaces and no wins
-  
-        return None
+            return "done"          #tells the function to stop when there are no blank spaces and no wins
             
 
 def get_input (current_board, turn):
@@ -341,15 +335,16 @@ def TicTacToe(): #Written by Cody West
                 update_board(current_board, get_input(current_board, turn), "X") #Update board with player 1's selection and X
             else:
                 print("AI")
-                update_board(current_board, AI(current_board, "X", "O", difficulty), "X") #Update board with AI selection
+                update_board(current_board, AI(current_board,"X","O", difficulty), "X") #Update board with AI selection
         else:
             if player2 == "human":
                 print("human")
                 update_board(current_board, get_input(current_board, turn), "O") #Update board with player 2's selection and X
             else:
                 print("AI")
-                update_board(current_board, AI(current_board, "O", "X", difficulty), "O") #Update board with AI selection
-        check_victory(current_board) #Check victory
+                update_board(current_board, AI(current_board,"O","X", difficulty), "O") #Update board with AI selection
+        if check_victory(current_board) == "done":
+            return "whatever"#Check victory
         turn = turn + 1 #Increase turn number
 
 

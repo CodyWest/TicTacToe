@@ -82,9 +82,9 @@ def test_get_input():#By Josh
     
     current_board= ["X"," ","O","O"," "," "," ","X","X"]
 
-    get_input(current_board, 6,7)
-    get_input(current_board, "utjdf", 7)
-    get_input(current_board, 1, 7)
+    print type(get_input(current_board, 6,7))==int
+    print type(get_input(current_board, "utjdf", 7))==int
+    print type(get_input(current_board, 1, 7))==int
     new_current_board= ["X"," ","O","O"," "," ","O","X","X"]
     
 
@@ -254,14 +254,13 @@ def check_victory(current_board):#By Joshua Landis
             
         if (" ") not in current_board:#if all of the spaces are filled and none have this blank value
 
-            return TIE          #tells the function to stop when there are no blank spaces and no wins
+            return "TIE"          #tells the function to stop when there are no blank spaces and no wins
   
         return None
             
 
-def get_input (current_board, player_input, turn):
+def get_input (current_board, turn):
     #get_input checks that player_input is valid and returns the slot
-   # the player is moving in.
     
 
 
@@ -269,11 +268,11 @@ def get_input (current_board, player_input, turn):
 
 
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        
-    while numbers.count(player_input)==0 or ((current_board[player_input])!=" ")):
+    player_input = 0    
+    while numbers.count(player_input)==0 or ((current_board[player_input])!=" "):
 
-        player_input=raw_input("Where would you like to put your symbol? ")
-        if numbers.count(player_input)!=0:#if someone says something that isn't 1-9
+        player_input=int(raw_input("Where would you like to put your symbol? "))
+        if numbers.count(player_input)==0:#if someone says something that isn't 1-9
             print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again
 
             
@@ -287,7 +286,7 @@ def get_input (current_board, player_input, turn):
                 
                 slot = player_input#convert the player_input into slot(the variable that the rest of the function uses
 
-                return slot#return slot back to the rest of the function
+                return slot #return slot back to the rest of the function
 
             else:#if that spot has already been taken
 
@@ -338,13 +337,20 @@ def TicTacToe(): #Written by Cody West
         draw_board(current_board) #Draw current board
         if turn%2 == 1: #If it's an odd numbered turn
             if player1 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")), turn), "X") #Update board with player 1's selection and X
+                print("human")
+                update_board(current_board, get_input(current_board, turn), "X") #Update board with player 1's selection and X
             else:
+                print("AI")
                 update_board(current_board, AI(current_board, "X", "O", difficulty), "X") #Update board with AI selection
         else:
             if player2 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")), turn), "O") #Update board with player 2's selection and X
+                print("human")
+                update_board(current_board, get_input(current_board, turn), "O") #Update board with player 2's selection and X
             else:
+                print("AI")
                 update_board(current_board, AI(current_board, "O", "X", difficulty), "O") #Update board with AI selection
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
+
+
+TicTacToe()

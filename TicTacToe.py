@@ -198,7 +198,7 @@ def create_victory_conditions(size): #Written by Cody West
                         
     
 def draw_example_board(): #By Grant
-'''create an example board to show players what slot numbers they can choose. Will display during the first 3 turns of the game'''
+#create an example board to show players what slot numbers they can choose. Will display during the first 3 turns of the game'''
     example_board_vert_1 = "  1  I  2  I  3  "
     example_board_vert_2 = "  4  I  5  I  6  "
     example_board_vert_3 = "  7  I  8  I  9  "
@@ -212,7 +212,7 @@ def draw_example_board(): #By Grant
     
 
 def draw_board(current_board): #By Grant
-'''draws the most current version of the board (current_board)'''
+#draws the most current version of the board (current_board)'''
     board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
     board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
     board_vert_3 = "  "+current_board[6]+"  "+"I"+"  "+current_board[7]+"  "+"I"+"  "+current_board[8]+"  " #draws third row of slots and verticalspacers
@@ -230,21 +230,21 @@ def check_victory(current_board):#By Joshua Landis
 
 #this function is going to try to find a victory and then return a win or a tie
 
-    WAYS_TO_WIN = ((0, 1, 2),#here we have all of the possible wins that the player can make
-                   (3, 4, 5),
-                   (6, 7, 8),
-                   (0, 3, 6),
-                   (1, 4, 7),
-                   (2, 5, 8),
-                   (0, 4, 8),
-                   (2, 4, 6))
+    WAYS_TO_WIN = [[0, 1, 2],#here we have all of the possible wins that the player can make
+                   [3, 4, 5],
+                   [6, 7, 8],
+                   [0, 3, 6],
+                   [1, 4, 7],
+                   [2, 5, 8],
+                   [0, 4, 8],
+                   [2, 4, 6]]
     #just looks neater and more intuitive :-)
 
-    for current_board in WAYS_TO_WIN:
+    for board in WAYS_TO_WIN:
 
-        if current_board[0] == current_board[1] == current_board[2] != (" "):#if all of the slots have the same symbol
+        if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] != (" "):#if all of the slots have the same symbol
 
-            winner = current_board[0]#declare the symbol of the first value in the winning row
+            winner = current_board[board[0]]#declare the symbol of the first value in the winning row
             return winner
             
         if (" ") not in current_board:#if all of the spaces are filled and none have this blank value
@@ -255,9 +255,9 @@ def check_victory(current_board):#By Joshua Landis
             
 
 def get_input (current_board, player_input, turn):
-    '''get_input checks that player_input is valid and returns the slot
-    the player is moving in.
-    '''
+    #get_input checks that player_input is valid and returns the slot
+   # the player is moving in.
+    
 
 
 
@@ -276,7 +276,7 @@ def get_input (current_board, player_input, turn):
         while player_input != (1,9):#if someone says something that isn't 1-9 
 
             print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again
-            player_input=raw_input("Wherre woul you like to place your spot")
+           # player_input=raw_input("Wherre woul you like to place your spot")
             
             
         else:#if it's ok
@@ -300,7 +300,7 @@ def get_input (current_board, player_input, turn):
     
 
 def update_board(current_board, slot, symbol): #By Grant
-'''Recives a slot value from get_input it uses to assign a section of the current_board list to the X or O of the player's selection'''
+#Recives a slot value from get_input it uses to assign a section of the current_board list to the X or O of the player's selection'''
     current_board[slot] = symbol
     return current_board
 

@@ -260,30 +260,23 @@ def get_input (current_board, player_input, turn):
     
 
 
+    
 
-    if turn % 2 == 0:#depending on who has gone already, decide if it is X or O turn
 
-        symbol = 'X'
-
-    else:
-
-        symbol = 'O'
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
-    player_input=raw_input("Where would you like to put your", symbol)
-        
-    while (player_input != (1,9) or ((current_board[player_input])!=" ")):
-        
-        while player_input != (1,9):#if someone says something that isn't 1-9 
+    while numbers.count(player_input)==0 or ((current_board[player_input])!=" ")):
 
+        player_input=raw_input("Where would you like to put your symbol? ")
+        if numbers.count(player_input)!=0:#if someone says something that isn't 1-9
             print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again
-           # player_input=raw_input("Wherre woul you like to place your spot")
-            
+
             
         else:#if it's ok
             
             player_input=player_input-1#bring it down one for the update board function
             
-            while ((current_board[player_input]) == " "):#while the space the chose is empty
+            if ((current_board[player_input]) == " "):#while the space the chose is empty
 
                 print(player_input, "Is a valid move")#tell them its a valid move
                 
@@ -293,7 +286,7 @@ def get_input (current_board, player_input, turn):
 
             else:#if that spot has already been taken
 
-                print(player_input, " has already been taken. Please select another slot.")#tell them they need to pick again and the loop starts over
+                print(player_input + 1, " has already been taken. Please select another slot.")#tell them they need to pick again and the loop starts over
                 
         
     

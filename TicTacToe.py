@@ -244,7 +244,7 @@ def check_victory(current_board):#By Joshua Landis
 
         if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] != (" "):#if all of the slots have the same symbol
 
-            winner = current_board[board[0]]#declare the symbol of the first value in the winning row
+            winner = current_board[board[0]]#declare the symbol of the first value in the winning row the WINNER
             return winner
             
         if (" ") not in current_board:#if all of the spaces are filled and none have this blank value
@@ -269,7 +269,7 @@ def get_input (current_board, player_input, turn):
 
         symbol = 'O'
         
-    player_input=raw_input("Where would you like to put your", symbol)
+    player_input=raw_input("Where would you like to put your spot?")
         
     while (player_input != (1,9) or ((current_board[player_input])!=" ")):
         

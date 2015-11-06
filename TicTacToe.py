@@ -29,7 +29,6 @@ def test_check_victory(check_victory):
 	else:
 	   print("Nice")
 
-
 def test_AI(): #Written by Cody West
     """Tests AI function""" 
     boarda = [" "," "," "," "," "," "," ","X","X"]
@@ -83,9 +82,9 @@ def test_get_input():#By Josh
     
     current_board= ["X"," ","O","O"," "," "," ","X","X"]
 
-    get_input(current_board, 6,7)
-    get_input(current_board, "utjdf", 7)
-    get_input(current_board, 1, 7)
+    print type(get_input(current_board, 6,7))==int
+    print type(get_input(current_board, "utjdf", 7))==int
+    print type(get_input(current_board, 1, 7))==int
     new_current_board= ["X"," ","O","O"," "," ","O","X","X"]
     
 
@@ -158,12 +157,12 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
             return(4) #Take the center
         elif current_board[0] or current_board[2] or current_board[6] or current_board[8] == " ": #Else, if a corner is open
             corners = 2*random.randint(0,4) #Selects a random corner (or center, which will reject)
-            while current_board(corners) != " ": #Until the corner selected is empty
+            while current_board[corners] != " ": #Until the corner selected is empty
                 corners = 2*random.randint(0,4) #Select a new corner or center
             return(corners) #Return empty corner
         else:
             sides = 2*random.randint(0,3)+1 #Selects a side
-            while current_board(sides) != " ": #Until the side is empty
+            while current_board[sides] != " ": #Until the side is empty
                 sides = 2*random.randint(0,3)+1 #Selects a new side
             return(sides) #Returns empty side
     if difficulty < 4: #If difficulty is less than 4
@@ -172,7 +171,7 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
             ran = random.randint(0,8) #Picks a new spot
         return(ran) #Returns empty spot
 
-def create_victory_conditions(size): #Written by Cody West
+def create_victory_conditions(size): #Written by Cody West.  Not used in current program, could be used to make boards of different sizes
     """Creates a list of victory conditions based on the size of the board"""
     victory_conditions = []
     for i in range(size):
@@ -198,21 +197,25 @@ def create_victory_conditions(size): #Written by Cody West
                         
     
 def draw_example_board(): #By Grant
-#create an example board to show players what slot numbers they can choose. Will display during the first 3 turns of the game'''
+#create an example board to show players what slot numbers they can choose. Will display during the first 3 turns of the game
     example_board_vert_1 = "  1  I  2  I  3  "
     example_board_vert_2 = "  4  I  5  I  6  "
     example_board_vert_3 = "  7  I  8  I  9  "
     example_board_horiz = "_________________"
     
+    print("")
+    print("Here's what slots you can select:")
     print(example_board_vert_1)
     print(example_board_horiz)
     print(example_board_vert_2)
     print(example_board_horiz)
     print(example_board_vert_3)
+    print("")
     
 
 def draw_board(current_board): #By Grant
-#draws the most current version of the board (current_board)'''
+#draws the most current version of the board (current_board)
+
     board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
     board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
     board_vert_3 = "  "+current_board[6]+"  "+"I"+"  "+current_board[7]+"  "+"I"+"  "+current_board[8]+"  " #draws third row of slots and verticalspacers
@@ -220,51 +223,53 @@ def draw_board(current_board): #By Grant
     board_horiz_2 = "_"*len(board_vert_2) #draws second horizontal spacer
 
 
+    print("Take your pick:")
     print(board_vert_1)
     print(board_horiz_1)
     print(board_vert_2)
     print(board_horiz_2)
     print(board_vert_3)
-#print the board
+    print("")#print the board
+
 def check_victory(current_board):#By Joshua Landis
 
 #this function is going to try to find a victory and then return a win or a tie
 
-    WAYS_TO_WIN = [[0, 1, 2],#here we have all of the possible wins that the player can make
-                   [3, 4, 5],
-                   [6, 7, 8],
-                   [0, 3, 6],
-                   [1, 4, 7],
-                   [2, 5, 8],
-                   [0, 4, 8],
-                   [2, 4, 6]]
+    WAYS_TO_WIN = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
     #just looks neater and more intuitive :-)
 
     for board in WAYS_TO_WIN:
+<<<<<<< HEAD
 
         if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] != (" "):#if all of the slots have the same symbol
 
             winner = current_board[board[0]]#declare the symbol of the first value in the winning row the WINNER
             return winner
+=======
+        if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] and current_board[board[0]]!= (" "):#if all of the slots have the same symbol
+            draw_board(current_board)
+            print("IT'S OVER!")
+            print(current_board[board[0]], "WINS")
+            return "done"
+>>>>>>> origin/master
             
-        if (" ") not in current_board:#if all of the spaces are filled and none have this blank value
+        if current_board.count(" ") == 0:#if all of the spaces are filled and none have this blank value
+            draw_board(current_board)
+            print("IT'S OVER!")
+            print("YOU'RE ALL LOSERS!")
 
-            return TIE          #tells the function to stop when there are no blank spaces and no wins
-  
-        return None
+            return "done"          #tells the function to stop when there are no blank spaces and no wins
             
 
-def get_input (current_board, player_input, turn):
+def get_input (current_board, turn):
     #get_input checks that player_input is valid and returns the slot
-   # the player is moving in.
     
 
 
+    
 
-    if turn % 2 == 0:#depending on who has gone already, decide if it is X or O turn
 
-        symbol = 'X'
-
+<<<<<<< HEAD
     else:
 
         symbol = 'O'
@@ -274,33 +279,39 @@ def get_input (current_board, player_input, turn):
     while (player_input != (1,9) or ((current_board[player_input])!=" ")):
         
         while player_input != (1,9):#if someone says something that isn't 1-9 
+=======
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    player_input = 0    
+    while numbers.count(player_input)==0 or ((current_board[player_input])!=" "):
+>>>>>>> origin/master
 
+        player_input=int(raw_input("Where would you like to put your symbol? "))
+        if numbers.count(player_input)==0:#if someone says something that isn't 1-9
             print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again
-           # player_input=raw_input("Wherre woul you like to place your spot")
-            
+
             
         else:#if it's ok
             
             player_input=player_input-1#bring it down one for the update board function
             
-            while ((current_board[player_input]) == " "):#while the space the chose is empty
+            if ((current_board[player_input]) == " "):#while the space the chose is empty
 
                 print(player_input, "Is a valid move")#tell them its a valid move
                 
                 slot = player_input#convert the player_input into slot(the variable that the rest of the function uses
 
-                return slot#return slot back to the rest of the function
+                return slot #return slot back to the rest of the function
 
             else:#if that spot has already been taken
 
-                print(player_input, " has already been taken. Please select another slot.")#tell them they need to pick again and the loop starts over
+                print(player_input + 1, " has already been taken. Please select another slot.")#tell them they need to pick again and the loop starts over
                 
         
     
     
 
 def update_board(current_board, slot, symbol): #By Grant
-#Recives a slot value from get_input it uses to assign a section of the current_board list to the X or O of the player's selection'''
+#Recives a slot value from get_input it uses to assign a section of the current_board list to the X or O of the player's selection
     current_board[slot] = symbol
     return current_board
 
@@ -340,15 +351,21 @@ def TicTacToe(): #Written by Cody West
         draw_board(current_board) #Draw current board
         if turn%2 == 1: #If it's an odd numbered turn
             if player1 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")), turn), "X") #Update board with player 1's selection and X
+                print("human")
+                update_board(current_board, get_input(current_board, turn), "X") #Update board with player 1's selection and X
             else:
-                update_board(current_board, AI(current_board, "X", "O", difficulty), "X") #Update board with AI selection
+                print("AI")
+                update_board(current_board, AI(current_board,"X","O", difficulty), "X") #Update board with AI selection
         else:
             if player2 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")), turn), "O") #Update board with player 2's selection and X
+                print("human")
+                update_board(current_board, get_input(current_board, turn), "O") #Update board with player 2's selection and X
             else:
-                update_board(current_board, AI(current_board, "O", "X", difficulty), "O") #Update board with AI selection
-        check_victory(current_board) #Check victory
+                print("AI")
+                update_board(current_board, AI(current_board,"O","X", difficulty), "O") #Update board with AI selection
+        if check_victory(current_board) == "done":
+            return "whatever"#Check victory
         turn = turn + 1 #Increase turn number
 
-test_get_input()
+
+TicTacToe()

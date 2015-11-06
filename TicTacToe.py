@@ -239,19 +239,11 @@ def check_victory(current_board):#By Joshua Landis
     #just looks neater and more intuitive :-)
 
     for board in WAYS_TO_WIN:
-<<<<<<< HEAD
-
-        if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] != (" "):#if all of the slots have the same symbol
-
-            winner = current_board[board[0]]#declare the symbol of the first value in the winning row the WINNER
-            return winner
-=======
         if current_board[board[0]] == current_board[board[1]] == current_board[board[2]] and current_board[board[0]]!= (" "):#if all of the slots have the same symbol
             draw_board(current_board)
             print("IT'S OVER!")
             print(current_board[board[0]], "WINS")
             return "done"
->>>>>>> origin/master
             
         if current_board.count(" ") == 0:#if all of the spaces are filled and none have this blank value
             draw_board(current_board)
@@ -263,28 +255,9 @@ def check_victory(current_board):#By Joshua Landis
 
 def get_input (current_board, turn):
     #get_input checks that player_input is valid and returns the slot
-    
-
-
-    
-
-
-<<<<<<< HEAD
-    else:
-
-        symbol = 'O'
-        
-    player_input=raw_input("Where would you like to put your spot?")
-        
-    while (player_input != (1,9) or ((current_board[player_input])!=" ")):
-        
-        while player_input != (1,9):#if someone says something that isn't 1-9 
-=======
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     player_input = 0    
     while numbers.count(player_input)==0 or ((current_board[player_input])!=" "):
->>>>>>> origin/master
-
         player_input=int(raw_input("Where would you like to put your symbol? "))
         if numbers.count(player_input)==0:#if someone says something that isn't 1-9
             print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again

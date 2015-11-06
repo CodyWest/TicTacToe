@@ -122,7 +122,7 @@ def test_update_board(): #By Grant
     print update_board(oldlistf, 5, "X")
     if update_board(oldlistf, 5, "X") == newlistf:
         print "ye"
-
+ 
 def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
     """Chooses moves for computer based on state of current board and difficulty of AI"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
@@ -198,6 +198,7 @@ def create_victory_conditions(size): #Written by Cody West
                         
     
 def draw_example_board(): #By Grant
+'''create an example board to show players what slot numbers they can choose. Will display during the first 3 turns of the game'''
     example_board_vert_1 = "  1  I  2  I  3  "
     example_board_vert_2 = "  4  I  5  I  6  "
     example_board_vert_3 = "  7  I  8  I  9  "
@@ -211,7 +212,7 @@ def draw_example_board(): #By Grant
     
 
 def draw_board(current_board): #By Grant
-
+'''draws the most current version of the board (current_board)'''
     board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
     board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
     board_vert_3 = "  "+current_board[6]+"  "+"I"+"  "+current_board[7]+"  "+"I"+"  "+current_board[8]+"  " #draws third row of slots and verticalspacers
@@ -295,6 +296,7 @@ def get_input (current_board, player_input, turn):
     
 
 def update_board(current_board, slot, symbol): #By Grant
+'''Recives a slot value from get_input it uses to assign a section of the current_board list to the X or O of the player's selection'''
     current_board[slot] = symbol
     return current_board
 
@@ -332,7 +334,6 @@ def TicTacToe(): #Written by Cody West
         if turn < 3: #For the first three turns
             draw_example_board() #Draw a board showing the slot numbers
         draw_board(current_board) #Draw current board
-        #slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
         if turn%2 == 1: #If it's an odd numbered turn
             if player1 == "human":
                 update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")), turn), "X") #Update board with player 1's selection and X

@@ -303,7 +303,7 @@ def TicTacToe(): #Written by Cody West
     """Plays Tic Tac Toe"""
     current_board = [" "," "," "," "," "," "," "," "," "] #Empty board
     players = 0 #Number of players
-    human = 0 #Indicates whether the human goes first or second (is 0 for two player games)
+    human_turn = 0 #Indicates whether the human goes first or second (is 0 for two player games)
     turn = 1 #Turn number
     while players != 1 and players != 2: #While a valid number of players has not been chosen
         players = int(raw_input("How many players are there?")) #Asks how many players there are
@@ -315,32 +315,34 @@ def TicTacToe(): #Written by Cody West
             difficulty = int(raw_input("Pick a difficulty.  1 is easiest, 4 is hardest")) #Ask for a difficulty
             if difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4: #If difficulty choice is not valid
                 print("Please pick a difficulty between 1 and 4") #Prints error message
-        while human != 1 and human != 2: #While a human turn has not been chosen
-            human = int(raw_input("Would you like to go first (1) or second (2)?")) #Ask for human turn
-            if human != 1 and human != 2: #If a valid turn is not chosen
+        while human_turn != 1 and human_turn != 2: #While a human turn has not been chosen
+            human_turn = int(raw_input("Would you like to go first (1) or second (2)?")) #Ask for human turn
+            if human_turn != 1 and human_turn != 2: #If a valid turn is not chosen
                 print("Please pick turn 1 or 2") #Print error message
-    if human == 1: #If human goes first
-        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
-        player2 = AI(current_board) #Player 2 is AI
-    elif human == 2: #If human goes second
-        player1 = AI(current_board) #Player 1 is AI
-        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn) #Player 2 is human
+    if human_turn == 1: #If human goes first
+        player1 = "human" #Player 1 is human
+        player2 = "AI" #Player 2 is AI
+    elif human_turn == 2: #If human goes second
+        player1 = "AI"
+        player2 = "human"
     else: #If neither
-        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
-        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn) #Player 2 is human
+        player1 = "human" #Player 1 is human
+        player2 = "human" #Player 2 is human
     while turn < 10: #While the number of turns in Tic Tac Toe has not been exceeded
         if turn < 3: #For the first three turns
             draw_example_board() #Draw a board showing the slot numbers
         draw_board(current_board) #Draw current board
-        #### FIXME - write some code to get the next turn... -- this should ask the right player or the AI for a turn
-        slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
-        ### End FIXME
+        #slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
         if turn%2 == 1: #If it's an odd numbered turn
-            #update_board(current_board, player1, "X") #Update board with player 1's selection and X
-            update_board(current_board, slot, "X") #Update board with player 1's selection and X
-        else: 
-            #update_board(current_board, player2, "O") #Update board with player 2's selection and O
-            update_board(current_board, slot, "O") #Update board with player 2's selection and O
+            if player1 == "human":
+                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn), "X") #Update board with player 1's selection and X
+            else:
+                update_board(current_board, AI(current_board), "X")
+        else:
+            if player2 == "human":
+                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn), "O") #Update board with player 1's selection and X
+            else:
+                update_board(current_board, AI(current_board), "O")
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
 

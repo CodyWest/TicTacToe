@@ -122,7 +122,7 @@ def test_update_board(): #By Grant
     print update_board(oldlistf, 5, "X")
     if update_board(oldlistf, 5, "X") == newlistf:
         print "ye"
- 
+
 def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody West
     """Chooses moves for computer based on state of current board and difficulty of AI"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
@@ -198,7 +198,6 @@ def create_victory_conditions(size): #Written by Cody West
                         
     
 def draw_example_board(): #By Grant
-'''create an example board to show players what slot numbers they can choose. Will display during the first 3 turns of the game'''
     example_board_vert_1 = "  1  I  2  I  3  "
     example_board_vert_2 = "  4  I  5  I  6  "
     example_board_vert_3 = "  7  I  8  I  9  "
@@ -212,7 +211,7 @@ def draw_example_board(): #By Grant
     
 
 def draw_board(current_board): #By Grant
-'''draws the most current version of the board (current_board)'''
+
     board_vert_1 = "  "+current_board[0]+"  "+"I"+"  "+current_board[1]+"  "+"I"+"  "+current_board[2]+"  " #draws first row of slots and vertcal spacers
     board_vert_2 = "  "+current_board[3]+"  "+"I"+"  "+current_board[4]+"  "+"I"+"  "+current_board[5]+"  " #draws second row of slots and vertical spacers
     board_vert_3 = "  "+current_board[6]+"  "+"I"+"  "+current_board[7]+"  "+"I"+"  "+current_board[8]+"  " #draws third row of slots and verticalspacers
@@ -259,7 +258,7 @@ def get_input (current_board, player_input, turn):
     the player is moving in.
     '''
 
-
+    player_input=raw_input("Where would you like to put your spot?")
 
     if turn % 2 == 0:#depending on who has gone already, decide if it is X or O turn
 
@@ -269,15 +268,11 @@ def get_input (current_board, player_input, turn):
 
         symbol = 'O'
         
-    player_input=raw_input("Where would you like to put your", symbol)
-        
-    while (player_input != (1,9) or ((current_board[player_input])!=" ")):
+    for player_input in (1,9):#for all of these possible inputs
         
         while player_input != (1,9):#if someone says something that isn't 1-9 
 
             print(player_input,"Is not a valid move buddy. Try again-->")#tell them to try again
-            player_input=raw_input("Wherre woul you like to place your spot")
-            
             
         else:#if it's ok
             
@@ -300,7 +295,6 @@ def get_input (current_board, player_input, turn):
     
 
 def update_board(current_board, slot, symbol): #By Grant
-'''Recives a slot value from get_input it uses to assign a section of the current_board list to the X or O of the player's selection'''
     current_board[slot] = symbol
     return current_board
 
@@ -309,7 +303,7 @@ def TicTacToe(): #Written by Cody West
     """Plays Tic Tac Toe"""
     current_board = [" "," "," "," "," "," "," "," "," "] #Empty board
     players = 0 #Number of players
-    human_turn = 0 #Indicates whether the human goes first or second (is 0 for two player games)
+    human = 0 #Indicates whether the human goes first or second (is 0 for two player games)
     turn = 1 #Turn number
     while players != 1 and players != 2: #While a valid number of players has not been chosen
         players = int(raw_input("How many players are there?")) #Asks how many players there are
@@ -321,33 +315,32 @@ def TicTacToe(): #Written by Cody West
             difficulty = int(raw_input("Pick a difficulty.  1 is easiest, 4 is hardest")) #Ask for a difficulty
             if difficulty != 1 and difficulty != 2 and difficulty != 3 and difficulty != 4: #If difficulty choice is not valid
                 print("Please pick a difficulty between 1 and 4") #Prints error message
-        while human_turn != 1 and human_turn != 2: #While a human turn has not been chosen
-            human_turn = int(raw_input("Would you like to go first (1) or second (2)?")) #Ask for human turn
-            if human_turn != 1 and human_turn != 2: #If a valid turn is not chosen
+        while human != 1 and human != 2: #While a human turn has not been chosen
+            human = int(raw_input("Would you like to go first (1) or second (2)?")) #Ask for human turn
+            if human != 1 and human != 2: #If a valid turn is not chosen
                 print("Please pick turn 1 or 2") #Print error message
-    if human_turn == 1: #If human goes first
-        player1 = "human" #Player 1 is human
-        player2 = "AI" #Player 2 is AI
-    elif human_turn == 2: #If human goes second
-        player1 = "AI" #Player 1 is AI
-        player2 = "human" #Player 2 is human
+    if human == 1: #If human goes first
+        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        player2 = AI(current_board) #Player 2 is AI
+    elif human == 2: #If human goes second
+        player1 = AI(current_board) #Player 1 is AI
+        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn) #Player 2 is human
     else: #If neither
-        player1 = "human" #Player 1 is human
-        player2 = "human" #Player 2 is human
+        player1 = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        player2 = get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")) - 1, turn) #Player 2 is human
     while turn < 10: #While the number of turns in Tic Tac Toe has not been exceeded
         if turn < 3: #For the first three turns
             draw_example_board() #Draw a board showing the slot numbers
         draw_board(current_board) #Draw current board
+        #### FIXME - write some code to get the next turn... -- this should ask the right player or the AI for a turn
+        slot = get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")) - 1, turn) #Player 1 is human
+        ### End FIXME
         if turn%2 == 1: #If it's an odd numbered turn
-            if player1 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 1 like to place their symbol?")), turn), "X") #Update board with player 1's selection and X
-            else:
-                update_board(current_board, AI(current_board, "X", "O", difficulty), "X") #Update board with AI selection
-        else:
-            if player2 == "human":
-                update_board(current_board, get_input(current_board, int(raw_input("Where would Player 2 like to place their symbol?")), turn), "O") #Update board with player 2's selection and X
-            else:
-                update_board(current_board, AI(current_board, "O", "X", difficulty), "O") #Update board with AI selection
+            #update_board(current_board, player1, "X") #Update board with player 1's selection and X
+            update_board(current_board, slot, "X") #Update board with player 1's selection and X
+        else: 
+            #update_board(current_board, player2, "O") #Update board with player 2's selection and O
+            update_board(current_board, slot, "O") #Update board with player 2's selection and O
         check_victory(current_board) #Check victory
         turn = turn + 1 #Increase turn number
 

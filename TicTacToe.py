@@ -126,13 +126,20 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
     """Chooses moves for computer based on state of current board and difficulty of AI"""
     victory_conditions = [[0,4,8],[2,4,6],[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8]] #Establishes victory conditions to be checked
     if difficulty >= 2: #If difficulty is at least 2
-        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
-            slots = victory_conditions[n] #Take the victory conditions and put them in a new list
+        ## Cody -- you could just write:
+        ## for slots in victory_conditions
+        for n in range(len(victory_conditions)): #For each victory condition in victory_conditions ## Oops
+            slots = victory_conditions[n] #Take the victory conditions and put them in a new list ## Oops 
             check = [] #Creates empty folder called check
             for i in range(len(slots)): #For each spot in slots
                 check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
+            ## This you can do even more efficiently using a beautiful syntax called
+            ## "list comprehension" which entered python some years ago -- watch
+            ## me do it in one line:
+            ## check = [current_board[s] for s in slots]
             if check.count(AI_symbol)==2 and check.count(" ")==1: #If there are any rows where the AI has two symbols and there's one empty spot
                 return(slots[check.index(" ")]) #Return the empty spot from that row
+        ## Oops -- you repeat the code again here for no reason
         for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
             check = [] #Creates empty folder called check
@@ -140,8 +147,10 @@ def AI(current_board, AI_symbol, opponent_symbol, difficulty): #Written by Cody 
                 check.append(current_board[slots[i]]) #Add the corresponding spot from the current board to check
             if check.count(opponent_symbol)==2 and check.count(" ")==1: #If there are any rows where the opponent has two symbols and there's one empty spot
                 return(slots[check.index(" ")]) #Return the empty spot from that row
-       
     if difficulty >= 3: #If difficulty is at least 3
+        ## It looks like you're doing an identical loop here -- I
+        ## wonder why you don't move the if statement inside the loop
+        ## -- I believe that would significantly shorten your code
         for n in range(len(victory_conditions)): #For each victory condition in victory_conditions
             slots = victory_conditions[n] #Take the victory conditions and put them in a new list
             check = [] #Creates empty folder called check
@@ -233,7 +242,7 @@ def draw_board(current_board): #By Grant
 
 def check_victory(current_board):#By Joshua Landis
 
-#this function is going to try to find a victory and then return a win or a tie
+    #this function is going to try to find a victory and then return a win or a tie
 
     WAYS_TO_WIN = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
     #just looks neater and more intuitive :-)
@@ -322,6 +331,9 @@ def TicTacToe(): #Written by Cody West
         if turn < 3: #For the first three turns
             draw_example_board() #Draw a board showing the slot numbers
         draw_board(current_board) #Draw current board
+        ## You could write this logic much more compactly -- try to avoid having so many
+        ## lines of code that look identical. You have four different update_board calls
+        ## here where you could have just one.
         if turn%2 == 1: #If it's an odd numbered turn
             if player1 == "human":
                 print("human")
@@ -342,3 +354,4 @@ def TicTacToe(): #Written by Cody West
 
 
 TicTacToe()
+
